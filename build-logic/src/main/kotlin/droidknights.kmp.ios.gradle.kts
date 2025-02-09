@@ -1,5 +1,0 @@
-import com.droidknights.app.configureKotlinMultiplatform
-import com.droidknights.app.configureKotlinMultiplatformIos
-
-configureKotlinMultiplatform()
-configureKotlinMultiplatformIos()
