@@ -3,6 +3,7 @@ package com.droidknights.app.multiplatform
 import com.android.build.api.dsl.LibraryExtension
 import com.droidknights.app.configureKotlinMultiplatform
 import com.droidknights.app.configureKotlinMultiplatformAndroid
+import com.droidknights.app.configureKotlinMultiplatformIos
 import com.droidknights.app.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -19,5 +20,6 @@ class KotlinMultiplatformConventionPlugin : Plugin<Project> {
 
         extensions.configure<KotlinMultiplatformExtension>(::configureKotlinMultiplatform)
         extensions.configure<LibraryExtension>(::configureKotlinMultiplatformAndroid)
+        configureKotlinMultiplatformIos()
     }
 }
