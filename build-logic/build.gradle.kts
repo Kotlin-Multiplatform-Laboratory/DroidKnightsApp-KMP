@@ -28,5 +28,13 @@ gradlePlugin {
             id = "droidknights.kotlin.hilt"
             implementationClass = "com.droidknights.app.HiltKotlinPlugin"
         }
+        register("kotlinMultiplatform") {
+            id = "droidknights.kotlin.multiplatform"
+            implementationClass = "com.droidknights.app.multiplatform.KotlinMultiplatformConventionPlugin"
+        }
+        register("composeMultiplatform") {
+            id = "droidknights.compose.multiplatform"
+            implementationClass = "com.droidknights.app.multiplatform.ComposeMultiplatformConventionPlugin"
+        }
     }
 }
