@@ -1,6 +1,9 @@
 [versions]
 ## Android gradle plugin
 androidGradlePlugin = "8.8.0"
+android-compileSdk = "35"
+android-minSdk = "28"
+android-targetSdk = "34"
 
 # https://github.com/google/desugar_jdk_libs/blob/master/CHANGELOG.md
 androidDesugarJdkLibs = "2.1.4"
@@ -102,6 +105,12 @@ detekt = "1.23.7"
 # https://mockk.io/
 mockk = "1.13.16"
 
+# koin https://github.com/InsertKoinIO/koin
+koin = "4.0.2"
+koinComposeMultiplatform = "4.0.2"
+# kermit https://github.com/touchlab/Kermit
+kermit = "2.0.5"
+
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
@@ -176,6 +185,15 @@ oss-licenses = { group = "com.google.android.gms", name = "play-services-oss-lic
 
 # verify
 verify-detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
+# koin
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinComposeMultiplatform" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinComposeMultiplatform" }
+
+# kermit
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 # plugin
 verify-detektPlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
