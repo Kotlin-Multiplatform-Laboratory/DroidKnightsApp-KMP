@@ -8,6 +8,14 @@ dependencies {
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.verify.detektPlugin)
     compileOnly(libs.compose.compiler.gradle.plugin)
+    compileOnly(libs.compose.gradle.plugin)
+}
+
+tasks {
+    validatePlugins {
+        enableStricterValidation = true
+        failOnWarning = true
+    }
 }
 
 gradlePlugin {
