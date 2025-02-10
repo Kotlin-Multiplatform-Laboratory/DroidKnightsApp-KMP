@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi.plugin)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 
@@ -32,42 +33,25 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
-
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 
             implementation(libs.koin.android)
             implementation(libs.hilt.android)
-//            ksp (libs.findLibrary("hilt.android.compiler").get())
-//            "kspAndroidTest"(libs.findLibrary("hilt.android.compiler").get())
-
-//            implementation(libs.ktor.client.android)
-//
-//            implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.hilt.core)
         }
 
         commonMain.dependencies {
-//            implementation(projects.feature.arts)
-//            implementation(projects.feature.detail)
-
             implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-//            implementation(libs.navigation.compose)
-
             api(libs.koin.core)
             implementation(libs.koin.compose)
-//
-//            implementation(libs.ktor.client.core)
-//            implementation(libs.coil.compose)
-//            implementation(libs.coil.network.ktor)
-//
-//            implementation(libs.filekit.core)
         }
 
         iosMain.dependencies {
-//            implementation(libs.ktor.client.darwin)
+
         }
     }
 }
@@ -125,6 +109,8 @@ dependencies {
     implementation(projects.core.designsystem)
 
     implementation(projects.widget)
+
+    ksp(libs.hilt.android.compiler)
 
     baselineProfile(projects.baselineprofile)
     implementation(libs.androidx.profileinstaller)
