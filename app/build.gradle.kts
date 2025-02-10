@@ -1,17 +1,91 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    id("droidknights.android.application")
-    id("com.google.android.gms.oss-licenses-plugin")
+    id("com.android.application")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi.plugin)
+    alias(libs.plugins.ksp)
 }
+
+
+kotlin {
+    androidTarget {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
+    }
+
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+            optimized = true
+        }
+    }
+
+    sourceSets {
+        androidMain.dependencies {
+
+            implementation(compose.preview)
+            implementation(libs.androidx.activity.compose)
+
+            implementation(libs.koin.android)
+            implementation(libs.hilt.android)
+//            ksp (libs.findLibrary("hilt.android.compiler").get())
+//            "kspAndroidTest"(libs.findLibrary("hilt.android.compiler").get())
+
+//            implementation(libs.ktor.client.android)
+//
+//            implementation(libs.kotlinx.coroutines.android)
+        }
+
+        commonMain.dependencies {
+//            implementation(projects.feature.arts)
+//            implementation(projects.feature.detail)
+
+            implementation(compose.material3)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
+
+//            implementation(libs.navigation.compose)
+
+            api(libs.koin.core)
+            implementation(libs.koin.compose)
+//
+//            implementation(libs.ktor.client.core)
+//            implementation(libs.coil.compose)
+//            implementation(libs.coil.network.ktor)
+//
+//            implementation(libs.filekit.core)
+        }
+
+        iosMain.dependencies {
+//            implementation(libs.ktor.client.darwin)
+        }
+    }
+}
+
 
 android {
     namespace = "com.droidknights.app"
+    compileSdk = 35
 
     defaultConfig {
+        minSdk = 28
+        targetSdk = 35
+
         applicationId = "com.droidknights.app"
         versionCode = 1
         versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     packaging {
@@ -31,6 +105,16 @@ android {
             isDebuggable = false
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+
+        isCoreLibraryDesugaringEnabled = true
+    }
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -46,4 +130,6 @@ dependencies {
     implementation(libs.androidx.profileinstaller)
 
     testImplementation(projects.core.testing)
+
+    coreLibraryDesugaring(libs.android.desugarJdkLibs)
 }
