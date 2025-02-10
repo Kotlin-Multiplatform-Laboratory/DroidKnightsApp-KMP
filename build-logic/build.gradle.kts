@@ -8,6 +8,14 @@ dependencies {
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.verify.detektPlugin)
     compileOnly(libs.compose.compiler.gradle.plugin)
+    compileOnly(libs.compose.gradle.plugin)
+}
+
+tasks {
+    validatePlugins {
+        enableStricterValidation = true
+        failOnWarning = true
+    }
 }
 
 gradlePlugin {
@@ -19,6 +27,14 @@ gradlePlugin {
         register("kotlinHilt") {
             id = "droidknights.kotlin.hilt"
             implementationClass = "com.droidknights.app.HiltKotlinPlugin"
+        }
+        register("kotlinMultiplatform") {
+            id = "droidknights.kotlin.multiplatform"
+            implementationClass = "com.droidknights.app.multiplatform.KotlinMultiplatformConventionPlugin"
+        }
+        register("composeMultiplatform") {
+            id = "droidknights.compose.multiplatform"
+            implementationClass = "com.droidknights.app.multiplatform.ComposeMultiplatformConventionPlugin"
         }
     }
 }

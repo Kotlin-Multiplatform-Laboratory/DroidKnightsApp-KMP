@@ -23,3 +23,5 @@ internal val Project.androidExtension: CommonExtension<*, *, *, *, *, *>
 
 internal val ExtensionContainer.libs: VersionCatalog
     get() = getByType<VersionCatalogsExtension>().named("libs")
+val Project.libs
+    get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
