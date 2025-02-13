@@ -40,21 +40,21 @@ internal fun Project.configureKotlinMultiplatformIos() {
                 iosSimulatorArm64()
             }
         }
-        with(sourceSets) {
-            create("iosMain") {
-                dependsOn(getByName("commonMain"))
-                maybeCreate("iosArm64Main").dependsOn(this)
-                maybeCreate("iosX64Main").dependsOn(this)
-                maybeCreate("iosSimulatorArm64Main").dependsOn(this)
-            }
-
-            create("iosTest") {
-                dependsOn(getByName("commonTest"))
-                maybeCreate("iosArm64Test").dependsOn(this)
-                maybeCreate("iosX64Test").dependsOn(this)
-                maybeCreate("iosSimulatorArm64Test").dependsOn(this)
-            }
-        }
+//        with(sourceSets) {
+//            create("iosMain") {
+//                dependsOn(getByName("commonMain"))
+//                maybeCreate("iosArm64Main").dependsOn(this)
+//                maybeCreate("iosX64Main").dependsOn(this)
+//                maybeCreate("iosSimulatorArm64Main").dependsOn(this)
+//            }
+//
+//            create("iosTest") {
+//                dependsOn(getByName("commonTest"))
+//                maybeCreate("iosArm64Test").dependsOn(this)
+//                maybeCreate("iosX64Test").dependsOn(this)
+//                maybeCreate("iosSimulatorArm64Test").dependsOn(this)
+//            }
+//        }
 
         targets.withType<KotlinNativeTarget> {
             compilations["main"].kotlinOptions.freeCompilerArgs += "-Xexport-kdoc"

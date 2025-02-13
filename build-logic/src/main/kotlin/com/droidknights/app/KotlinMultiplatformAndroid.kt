@@ -31,8 +31,8 @@ internal fun Project.configureKotlinMultiplatformAndroid(
         }
     }
 
-    extensions.configure<TestExtension> {
-        configureKotlinAndroid()
+    extensions.configure<LibraryExtension> {
+        // configureKotlinAndroid()
         sourceSets {
             getByName("main") {
                 assets.srcDirs("src/androidMain/assets")
