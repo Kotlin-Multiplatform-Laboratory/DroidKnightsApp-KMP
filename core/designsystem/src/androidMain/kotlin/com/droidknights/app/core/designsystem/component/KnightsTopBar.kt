@@ -80,8 +80,6 @@ fun KnightsTopAppBar(
     }
 }
 
-enum class TopAppBarNavigationType { Back, Close }
-
 //@Preview
 //@Composable
 //private fun KnightsTopAppBarPreviewBack() {

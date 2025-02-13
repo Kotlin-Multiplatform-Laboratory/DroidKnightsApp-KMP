@@ -25,6 +25,8 @@ import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
+enum class TopAppBarNavigationType { Back, Close }
+
 @Composable
 fun KnightsTopAppBar(
     titleRes: StringResource,
@@ -81,7 +83,6 @@ fun KnightsTopAppBar(
     }
 }
 
-enum class TopAppBarNavigationType { Back, Close }
 
 //@Preview
 //@Composable
