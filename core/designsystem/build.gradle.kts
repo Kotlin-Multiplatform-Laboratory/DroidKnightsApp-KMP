@@ -1,8 +1,17 @@
 import com.droidknights.app.setNamespace
 
 plugins {
-    id("droidknights.android.library")
-    id("droidknights.android.compose")
+    id("droidknights.kotlin.multiplatform")
+    id("droidknights.compose.multiplatform")
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(libs.landscapist.coil3)
+            implementation(libs.landscapist.placeholder)
+        }
+    }
 }
 
 android {
@@ -11,10 +20,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.appcompat)
-    
-    implementation(libs.landscapist.bom)
-    implementation(libs.landscapist.coil)
-    implementation(libs.landscapist.placeholder)
 
     implementation(libs.androidx.glance)
 }
