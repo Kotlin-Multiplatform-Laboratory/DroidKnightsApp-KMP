@@ -31,17 +31,17 @@ internal fun Project.configureKotlinMultiplatformAndroid(
         }
     }
 
-    extensions.configure<TestExtension> {
-        configureKotlinAndroid()
+    extensions.configure<LibraryExtension> {
+        // configureKotlinAndroid()
         sourceSets {
             getByName("main") {
                 assets.srcDirs("src/androidMain/assets")
-                java.srcDirs("src/androidMain/kotlin", "src/commonMain/kotlin")
+                java.srcDirs("src/androidMain/kotlin")
                 res.srcDirs("src/androidMain/res")
             }
             getByName("test") {
                 assets.srcDirs("src/androidUnitTest/assets")
-                java.srcDirs("src/androidUnitTest/kotlin", "src/commonTest/kotlin")
+                java.srcDirs("src/androidUnitTest/kotlin")
                 res.srcDirs("src/androidUnitTest/res")
             }
         }
