@@ -13,11 +13,12 @@ internal fun Project.configureKotlinMultiplatform(
         apply("org.jetbrains.kotlin.multiplatform")
     }
     applyDefaultHierarchyTemplate()
+    androidTarget()
 
     sourceSets.apply {
         commonMain {
             dependencies {
-                implementation(libs.findLibrary("coroutine.core").get())
+                implementation(libs.findLibrary("coroutines-core").get())
                 implementation(libs.findLibrary("kermit").get())
             }
         }

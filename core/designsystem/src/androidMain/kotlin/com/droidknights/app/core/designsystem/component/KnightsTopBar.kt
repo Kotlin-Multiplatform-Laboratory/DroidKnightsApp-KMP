@@ -21,8 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 
@@ -74,7 +72,7 @@ fun KnightsTopAppBar(
                 }
             }
             Text(
-                text = stringResource(id = titleRes),
+                text = androidx.compose.ui.res.stringResource(titleRes),
                 style = KnightsTheme.typography.titleSmallM,
                 modifier = Modifier.align(Alignment.Center)
             )
@@ -82,24 +80,22 @@ fun KnightsTopAppBar(
     }
 }
 
-enum class TopAppBarNavigationType { Back, Close }
-
-@Preview
-@Composable
-private fun KnightsTopAppBarPreviewBack() {
-    KnightsTopAppBar(
-        titleRes = android.R.string.untitled,
-        navigationType = TopAppBarNavigationType.Back,
-        navigationIconContentDescription = "Navigation icon"
-    )
-}
-
-@Preview
-@Composable
-private fun KnightsTopAppBarPreviewClose() {
-    KnightsTopAppBar(
-        titleRes = android.R.string.untitled,
-        navigationType = TopAppBarNavigationType.Close,
-        navigationIconContentDescription = "Navigation icon"
-    )
-}
+//@Preview
+//@Composable
+//private fun KnightsTopAppBarPreviewBack() {
+//    KnightsTopAppBar(
+//        titleRes = android.R.string.untitled,
+//        navigationType = TopAppBarNavigationType.Back,
+//        navigationIconContentDescription = "Navigation icon"
+//    )
+//}
+//
+//@Preview
+//@Composable
+//private fun KnightsTopAppBarPreviewClose() {
+//    KnightsTopAppBar(
+//        titleRes = android.R.string.untitled,
+//        navigationType = TopAppBarNavigationType.Close,
+//        navigationIconContentDescription = "Navigation icon"
+//    )
+//}
