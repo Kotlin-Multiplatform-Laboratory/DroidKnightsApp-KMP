@@ -3,13 +3,10 @@ package com.droidknights.app.core.designsystem.component
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
 import com.skydoves.landscapist.ImageOptions
-import com.skydoves.landscapist.coil.CoilImage
+import com.skydoves.landscapist.coil3.CoilImage
 import com.skydoves.landscapist.components.rememberImageComponent
 import com.skydoves.landscapist.placeholder.placeholder.PlaceholderPlugin
 
@@ -36,11 +33,11 @@ fun NetworkImage(
     )
 }
 
-@Preview
-@Composable
-private fun NetworkImagePreview() {
-    NetworkImage(
-        imageUrl = "",
-        placeholder = ColorPainter(Color(0xFF000000)),
-    )
-}
+//@Preview
+//@Composable
+//private fun NetworkImagePreview() {
+//    NetworkImage(
+//        imageUrl = "",
+//        placeholder = ColorPainter(Color(0xFF000000)),
+//    )
+//}

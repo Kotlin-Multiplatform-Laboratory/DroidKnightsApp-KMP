@@ -8,10 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
-import com.droidknights.app.core.designsystem.theme.LightGray
 
 @Composable
 fun BottomLogo(color: Color = LightGray) {
@@ -31,11 +30,11 @@ fun BottomLogo(color: Color = LightGray) {
 
 internal val BottomLogoHeight = 48.dp
 
-@Preview(showBackground = true, backgroundColor = 0xFF000000)
-@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
-@Composable
-private fun BottomLogoPreview() {
-    KnightsTheme {
-        BottomLogo()
-    }
-}
+//@Preview(showBackground = true, backgroundColor = 0xFF000000)
+//@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
+//@Composable
+//private fun BottomLogoPreview() {
+//    KnightsTheme {
+//        BottomLogo()
+//    }
+//}
