@@ -11,15 +11,13 @@ kotlin {
             implementation(libs.landscapist.coil3)
             implementation(libs.landscapist.placeholder)
         }
+        androidMain.dependencies {
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.glance)
+        }
     }
 }
 
 android {
     setNamespace("core.designsystem")
-}
-
-dependencies {
-    implementation(libs.androidx.appcompat)
-
-    implementation(libs.androidx.glance)
 }
