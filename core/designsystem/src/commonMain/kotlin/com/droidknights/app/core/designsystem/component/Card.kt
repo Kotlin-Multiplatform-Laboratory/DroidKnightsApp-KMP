@@ -43,3 +43,11 @@ fun KnightsCard(
     )
 }
 
+//@Composable
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+//private fun KnightsCardPreview() {
+//    KnightsTheme {
+//        KnightsCard(modifier = Modifier.size(320.dp, 160.dp), content = { })
+//    }
+//}
