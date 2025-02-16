@@ -1,9 +1,18 @@
+import com.droidknights.app.setNamespace
+
 plugins {
-    id("droidknights.kotlin.library")
-    id("kotlinx-serialization")
+    id("droidknights.kotlin.multiplatform")
+    id("droidknights.kotlin.serialization")
 }
 
-dependencies {
-    api(libs.kotlinx.datetime)
-    implementation(libs.kotlinx.serialization.json)
+android {
+    setNamespace("core.model")
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api(libs.kotlinx.datetime)
+        }
+    }
 }
