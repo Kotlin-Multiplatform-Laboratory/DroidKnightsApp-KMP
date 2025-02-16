@@ -48,6 +48,7 @@ kotlin {
 
             api(libs.koin.core)
             implementation(libs.koin.compose)
+            api(libs.koin.annotations)
         }
 
         iosMain.dependencies {
@@ -56,6 +57,10 @@ kotlin {
     }
 }
 
+ksp {
+    arg("KOIN_CONFIG_CHECK", "true")
+    arg("KOIN_DEFAULT_MODULE", "false")
+}
 
 android {
     namespace = "com.droidknights.app"
@@ -118,4 +123,11 @@ dependencies {
     testImplementation(projects.core.testing)
 
     coreLibraryDesugaring(libs.android.desugarJdkLibs)
+}
+
+dependencies {
+    add("kspCommonMainMetadata", libs.koin.ksp.compiler)
+    add("kspAndroid", libs.koin.ksp.compiler)
+    add("kspIosArm64", libs.koin.ksp.compiler)
+    add("kspIosSimulatorArm64", libs.koin.ksp.compiler)
 }
