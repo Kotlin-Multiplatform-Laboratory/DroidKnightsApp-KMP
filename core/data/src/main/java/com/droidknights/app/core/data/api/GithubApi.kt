@@ -1,8 +1,8 @@
 package com.droidknights.app.core.data.api
 
 import com.droidknights.app.core.data.api.model.ContributorResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
+import de.jensklingenberg.ktorfit.http.GET
+import de.jensklingenberg.ktorfit.http.Path
 
 internal interface GithubApi {
 

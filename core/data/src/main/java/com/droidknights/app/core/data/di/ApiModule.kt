@@ -6,13 +6,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import de.jensklingenberg.ktorfit.Ktorfit
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import retrofit2.Converter
-import retrofit2.Retrofit
-import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -20,39 +19,33 @@ internal object ApiModule {
 
     @Provides
     @Singleton
-    fun provideOkhttpClient(): OkHttpClient = OkHttpClient.Builder().build()
-
-    @Provides
-    @Singleton
-    fun provideConverterFactory(
+    fun provideHttpClient(
         json: Json,
-    ): Converter.Factory {
-        return json.asConverterFactory("application/json".toMediaType())
+    ): HttpClient = HttpClient {
+        install(ContentNegotiation) {
+            json(json = json)
+        }
     }
 
     @Provides
     @Singleton
     fun provideGithubApi(
-        okHttpClient: OkHttpClient,
-        converterFactory: Converter.Factory,
-    ): GithubApi {
-        return Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .addConverterFactory(converterFactory)
-            .client(okHttpClient).build()
-            .create(GithubApi::class.java)
-    }
+        httpClient: HttpClient
+    ): GithubApi = Ktorfit.Builder()
+        .baseUrl("https://api.github.com/")
+        .httpClient(client = httpClient)
+        .build()
+        .create()
 
     @Provides
     @Singleton
     fun provideGitRawApi(
-        okHttpClient: OkHttpClient,
-        converterFactory: Converter.Factory,
-    ): GithubRawApi = Retrofit.Builder()
+        httpClient: HttpClient
+    ): GithubRawApi = Ktorfit.Builder()
         .baseUrl("https://raw.githubusercontent.com/")
-        .addConverterFactory(converterFactory)
-        .client(okHttpClient).build()
-        .create(GithubRawApi::class.java)
+        .httpClient(client = httpClient)
+        .build()
+        .create()
 
     @Provides
     @Singleton

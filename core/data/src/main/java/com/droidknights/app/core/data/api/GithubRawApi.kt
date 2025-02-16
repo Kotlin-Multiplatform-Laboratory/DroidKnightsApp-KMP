@@ -3,7 +3,7 @@ package com.droidknights.app.core.data.api
 import com.droidknights.app.core.data.api.model.ContributionYearResponse
 import com.droidknights.app.core.data.api.model.SessionResponse
 import com.droidknights.app.core.data.api.model.SponsorResponse
-import retrofit2.http.GET
+import de.jensklingenberg.ktorfit.http.GET
 
 internal interface GithubRawApi {
 
