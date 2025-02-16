@@ -21,6 +21,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.roborazzi.plugin) apply false
+    alias(libs.plugins.ktrofit) apply false
 }
 
 apply {
