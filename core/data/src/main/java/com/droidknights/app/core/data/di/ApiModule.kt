@@ -2,6 +2,8 @@ package com.droidknights.app.core.data.di
 
 import com.droidknights.app.core.data.api.GithubApi
 import com.droidknights.app.core.data.api.GithubRawApi
+import com.droidknights.app.core.data.api.createGithubApi
+import com.droidknights.app.core.data.api.createGithubRawApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,7 +37,7 @@ internal object ApiModule {
         .baseUrl("https://api.github.com/")
         .httpClient(client = httpClient)
         .build()
-        .create()
+        .createGithubApi()
 
     @Provides
     @Singleton
@@ -45,7 +47,7 @@ internal object ApiModule {
         .baseUrl("https://raw.githubusercontent.com/")
         .httpClient(client = httpClient)
         .build()
-        .create()
+        .createGithubRawApi()
 
     @Provides
     @Singleton

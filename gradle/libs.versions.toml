@@ -54,9 +54,9 @@ hiltNavigationCompose = "1.2.0"
 
 ## Network
 # https://github.com/Foso/Ktorfit
-ktorfit = "2.1.0"
+ktorfit = "2.3.0"
 # https://github.com/ktorio/ktor
-ktorVersion = "2.3.12"
+ktorVersion = "3.1.0"
 
 ## Kotlin
 # https://github.com/JetBrains/kotlin
@@ -227,4 +227,4 @@ jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "composePlugin
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
 roborazzi-plugin = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
-ktrofit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
+ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
