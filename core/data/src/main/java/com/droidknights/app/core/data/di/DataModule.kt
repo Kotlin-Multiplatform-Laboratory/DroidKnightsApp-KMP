@@ -14,67 +14,61 @@ import com.droidknights.app.core.data.repository.api.SettingsRepository
 import com.droidknights.app.core.data.repository.api.SponsorRepository
 import com.droidknights.app.core.datastore.datasource.DefaultSessionPreferencesDataSource
 import com.droidknights.app.core.datastore.datasource.SessionPreferencesDataSource
-import dagger.Binds
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
-import javax.inject.Singleton
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
+import org.koin.core.annotation.Single
 
-@InstallIn(SingletonComponent::class)
 @Module
-internal abstract class DataModule {
+@ComponentScan
+class DataModule {
 
-    @Binds
-    abstract fun bindsSettingsRepository(
-        repository: DefaultSettingsRepository,
-    ): SettingsRepository
+    @Single(binds = [SettingsRepository::class])
+    fun bindsSettingsRepository(
+        repository: DefaultSettingsRepository
+    ): SettingsRepository = repository
 
-    @Binds
-    abstract fun bindSessionLocalDataSource(
+    @Single(binds = [SessionPreferencesDataSource::class])
+    fun bindSessionLocalDataSource(
         dataSource: DefaultSessionPreferencesDataSource,
-    ): SessionPreferencesDataSource
+    ): SessionPreferencesDataSource = dataSource
 
-    @InstallIn(SingletonComponent::class)
-    @Module
-    internal object FakeModule {
-
-        @Provides
-        @Singleton
-        fun provideSponsorRepository(
-            githubRawApi: GithubRawApi,
-        ): SponsorRepository =
-            DefaultSponsorRepository(githubRawApi)
-
-        @Provides
-        @Singleton
-        fun provideSessionRepository(
-            githubRawApi: GithubRawApi,
-            sessionDataSource: SessionPreferencesDataSource,
-        ): SessionRepository =
-            DefaultSessionRepository(githubRawApi, sessionDataSource)
-
-        @Provides
-        @Singleton
-        fun provideContributorRepository(
-            githubApi: GithubApi,
-            githubRawApi: AssetsGithubRawApi,
-        ): ContributorRepository =
-            DefaultContributorRepository(githubApi, githubRawApi)
-
-        @Provides
-        @Singleton
-        fun provideGithubRawApi(
-            @ApplicationContext context: Context,
-            json: Json,
-        ): AssetsGithubRawApi =
-            AssetsGithubRawApi(
-                json = json,
-                sponsors = context.assets.open("sponsors.json"),
-                sessions = context.assets.open("sessions.json"),
-                contributors = context.assets.open("contributors.json"),
-            )
-    }
 }
+
+@Module
+@ComponentScan
+class FakeModule {
+
+    @Single
+    fun provideSponsorRepository(
+        githubRawApi: GithubRawApi,
+    ): SponsorRepository =
+        DefaultSponsorRepository(githubRawApi)
+
+    @Single
+    fun provideSessionRepository(
+        githubRawApi: GithubRawApi,
+        sessionDataSource: SessionPreferencesDataSource,
+    ): SessionRepository =
+        DefaultSessionRepository(githubRawApi, sessionDataSource)
+
+    @Single
+    fun provideContributorRepository(
+        githubApi: GithubApi,
+        githubRawApi: AssetsGithubRawApi,
+    ): ContributorRepository =
+        DefaultContributorRepository(githubApi, githubRawApi)
+
+    @Single
+    fun provideGithubRawApi(
+        context: Context,
+        json: Json,
+    ): AssetsGithubRawApi =
+        AssetsGithubRawApi(
+            json = json,
+            sponsors = context.assets.open("sponsors.json"),
+            sessions = context.assets.open("sessions.json"),
+            contributors = context.assets.open("contributors.json"),
+        )
+}
+
