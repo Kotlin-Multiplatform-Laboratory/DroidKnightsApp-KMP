@@ -24,21 +24,19 @@ import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.height
 import androidx.glance.layout.padding
 import com.droidknights.app.core.designsystem.theme.KnightsGlanceTheme
+import com.droidknights.app.core.domain.usecase.GetSessionUseCase
 import com.droidknights.app.widget.DroidKnightsWidgetReceiver.Companion.KEY_SESSION_IDS
-import com.droidknights.app.widget.di.WidgetModule
-import dagger.hilt.EntryPoints
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class DroidKnightsWidget : GlanceAppWidget() {
+class DroidKnightsWidget : GlanceAppWidget(), KoinComponent {
 
     companion object {
         const val KEY_SESSION_ID = "KEY_SESSION_ID"
     }
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
-        val widgetModule: WidgetModule = EntryPoints.get(
-            context.applicationContext,
-            WidgetModule::class.java
-        )
+        val getSessionUseCase: GetSessionUseCase by inject()
 
         provideContent {
             KnightsGlanceTheme {
@@ -48,9 +46,9 @@ class DroidKnightsWidget : GlanceAppWidget() {
                 }
 
                 LaunchedEffect(state) {
-                    widgetSessionCards = state?.map {
+                    widgetSessionCards = state?.map { sessionId ->
                         WidgetSessionCardUiState(
-                            session = widgetModule.getSessionUseCase().invoke(it),
+                            session = getSessionUseCase.invoke(sessionId)
                         )
                     } ?: emptyList()
                 }
