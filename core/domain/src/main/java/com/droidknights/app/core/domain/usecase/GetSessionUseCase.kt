@@ -2,9 +2,10 @@ package com.droidknights.app.core.domain.usecase
 
 import com.droidknights.app.core.data.repository.api.SessionRepository
 import com.droidknights.app.core.model.Session
-import javax.inject.Inject
+import org.koin.core.annotation.Factory
 
-class GetSessionUseCase @Inject constructor(
+@Factory
+class GetSessionUseCase(
     private val sessionRepository: SessionRepository,
 ) {
 

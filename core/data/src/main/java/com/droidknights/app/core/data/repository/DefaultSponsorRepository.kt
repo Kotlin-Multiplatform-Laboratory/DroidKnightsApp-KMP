@@ -4,9 +4,10 @@ import com.droidknights.app.core.data.api.GithubRawApi
 import com.droidknights.app.core.data.mapper.toData
 import com.droidknights.app.core.data.repository.api.SponsorRepository
 import com.droidknights.app.core.model.Sponsor
-import javax.inject.Inject
+import org.koin.core.annotation.Single
 
-internal class DefaultSponsorRepository @Inject constructor(
+@Single
+internal class DefaultSponsorRepository(
     private val githubRawApi: GithubRawApi,
 ) : SponsorRepository {
 

@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.droidknights.app.core.domain.usecase.GetBookmarkedSessionIdsUseCase
 import com.droidknights.app.core.domain.usecase.GetSessionsUseCase
 import com.droidknights.app.feature.session.model.SessionUiState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,12 +14,12 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
+import org.koin.android.annotation.KoinViewModel
 
-@HiltViewModel
-class SessionViewModel @Inject constructor(
-    getSessionsUseCase: GetSessionsUseCase,
-    getBookmarkedSessionIdsUseCase: GetBookmarkedSessionIdsUseCase,
+@KoinViewModel
+class SessionViewModel(
+    private val getSessionsUseCase: GetSessionsUseCase,
+    private val getBookmarkedSessionIdsUseCase: GetBookmarkedSessionIdsUseCase,
 ) : ViewModel() {
 
     private val _errorFlow = MutableSharedFlow<Throwable>()

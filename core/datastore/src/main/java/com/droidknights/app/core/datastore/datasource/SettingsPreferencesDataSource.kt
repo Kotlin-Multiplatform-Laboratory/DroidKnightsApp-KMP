@@ -5,11 +5,12 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import com.droidknights.app.core.datastore.model.SettingsData
-import javax.inject.Inject
-import javax.inject.Named
 import kotlinx.coroutines.flow.map
+import org.koin.core.annotation.Named
+import org.koin.core.annotation.Single
 
-class SettingsPreferencesDataSource @Inject constructor(
+@Single
+class SettingsPreferencesDataSource(
     @Named("setting") private val dataStore: DataStore<Preferences>,
 ) {
     object PreferencesKey {

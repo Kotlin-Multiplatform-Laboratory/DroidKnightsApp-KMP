@@ -2,9 +2,10 @@ package com.droidknights.app.core.domain.usecase
 
 import com.droidknights.app.core.data.repository.api.SponsorRepository
 import com.droidknights.app.core.model.Sponsor
-import javax.inject.Inject
+import org.koin.core.annotation.Factory
 
-class GetSponsorsUseCase @Inject constructor(
+@Factory
+class GetSponsorsUseCase(
     private val sponsorRepository: SponsorRepository,
 ) {
 

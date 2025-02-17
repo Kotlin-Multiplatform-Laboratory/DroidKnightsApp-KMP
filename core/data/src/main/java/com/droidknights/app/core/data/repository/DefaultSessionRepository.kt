@@ -8,9 +8,10 @@ import com.droidknights.app.core.model.Session
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
-import javax.inject.Inject
+import org.koin.core.annotation.Single
 
-internal class DefaultSessionRepository @Inject constructor(
+@Single
+internal class DefaultSessionRepository(
     private val githubRawApi: GithubRawApi,
     private val sessionDataSource: SessionPreferencesDataSource
 ) : SessionRepository {

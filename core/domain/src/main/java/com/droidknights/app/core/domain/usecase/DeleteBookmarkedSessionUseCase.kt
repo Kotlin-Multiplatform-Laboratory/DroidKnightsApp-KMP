@@ -1,9 +1,10 @@
 package com.droidknights.app.core.domain.usecase
 
 import com.droidknights.app.core.data.repository.api.SessionRepository
-import javax.inject.Inject
+import org.koin.core.annotation.Factory
 
-class DeleteBookmarkedSessionUseCase @Inject constructor(
+@Factory
+class DeleteBookmarkedSessionUseCase(
     private val sessionRepository: SessionRepository,
 ) {
     suspend operator fun invoke(sessionIds: Set<String>) =
