@@ -15,8 +15,7 @@ class DroidKnightsApplication : Application() {
             androidContext(this@DroidKnightsApplication)
             androidLogger()
             modules(
-                ApiModule().module,
-                DataModule().module,
+                ApiModule().module
             )
         }
     }

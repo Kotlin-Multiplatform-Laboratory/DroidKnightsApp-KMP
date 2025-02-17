@@ -28,13 +28,6 @@ class ApiModule {
     }
 
     @Single
-    fun provideConverterFactory(
-        json: Json,
-    ): Converter.Factory {
-        return json.asConverterFactory("application/json".toMediaType())
-    }
-
-    @Single
     @Named("github")
     fun provideGithubKtrofit(
         httpClient: HttpClient
