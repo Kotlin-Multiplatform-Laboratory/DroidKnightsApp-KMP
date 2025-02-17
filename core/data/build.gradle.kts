@@ -4,6 +4,7 @@ plugins {
     id("droidknights.android.library")
     id("droidknights.android.hilt")
     id("kotlinx-serialization")
+    alias(libs.plugins.ktorfit)
 }
 
 android {
@@ -15,9 +16,12 @@ dependencies {
     implementation(projects.core.datastore)
     implementation(projects.core.dataApi)
 
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.kotlin.serialization)
-    implementation(libs.okhttp.logging)
+    implementation(libs.ktorfit.lib)
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.datetime)
     testImplementation(libs.turbine)

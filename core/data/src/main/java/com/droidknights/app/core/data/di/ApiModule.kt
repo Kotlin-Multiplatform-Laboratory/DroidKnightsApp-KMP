@@ -2,17 +2,20 @@ package com.droidknights.app.core.data.di
 
 import com.droidknights.app.core.data.api.GithubApi
 import com.droidknights.app.core.data.api.GithubRawApi
+import com.droidknights.app.core.data.api.createGithubApi
+import com.droidknights.app.core.data.api.createGithubRawApi
+import com.droidknights.app.core.data.di.qualifier.GitRaw
+import com.droidknights.app.core.data.di.qualifier.Github
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import de.jensklingenberg.ktorfit.Ktorfit
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import retrofit2.Converter
-import retrofit2.Retrofit
-import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -20,39 +23,45 @@ internal object ApiModule {
 
     @Provides
     @Singleton
-    fun provideOkhttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+    fun provideHttpClient(
+        json: Json,
+    ): HttpClient = HttpClient {
+        install(ContentNegotiation) {
+            json(json = json)
+        }
+    }
 
     @Provides
     @Singleton
-    fun provideConverterFactory(
-        json: Json,
-    ): Converter.Factory {
-        return json.asConverterFactory("application/json".toMediaType())
-    }
+    @Github
+    fun provideGithubKtrofit(
+        httpClient: HttpClient
+    ): Ktorfit = Ktorfit.Builder()
+        .baseUrl("https://api.github.com/")
+        .httpClient(client = httpClient)
+        .build()
+
+    @Provides
+    @Singleton
+    @GitRaw
+    fun provideGitRawKtorfit(
+        httpClient: HttpClient
+    ): Ktorfit = Ktorfit.Builder()
+        .baseUrl("https://raw.githubusercontent.com/")
+        .httpClient(client = httpClient)
+        .build()
 
     @Provides
     @Singleton
     fun provideGithubApi(
-        okHttpClient: OkHttpClient,
-        converterFactory: Converter.Factory,
-    ): GithubApi {
-        return Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .addConverterFactory(converterFactory)
-            .client(okHttpClient).build()
-            .create(GithubApi::class.java)
-    }
+        @Github ktorfit: Ktorfit
+    ): GithubApi = ktorfit.createGithubApi()
 
     @Provides
     @Singleton
     fun provideGitRawApi(
-        okHttpClient: OkHttpClient,
-        converterFactory: Converter.Factory,
-    ): GithubRawApi = Retrofit.Builder()
-        .baseUrl("https://raw.githubusercontent.com/")
-        .addConverterFactory(converterFactory)
-        .client(okHttpClient).build()
-        .create(GithubRawApi::class.java)
+        @GitRaw ktorfit: Ktorfit
+    ): GithubRawApi = ktorfit.createGithubRawApi()
 
     @Provides
     @Singleton

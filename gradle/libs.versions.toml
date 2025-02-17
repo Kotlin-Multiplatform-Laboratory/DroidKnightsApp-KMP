@@ -1,6 +1,6 @@
 [versions]
 ## Android gradle plugin
-androidGradlePlugin = "8.8.0"
+androidGradlePlugin = "8.8.1"
 android-compileSdk = "35"
 android-minSdk = "28"
 android-targetSdk = "34"
@@ -53,12 +53,10 @@ hilt = "2.55"
 hiltNavigationCompose = "1.2.0"
 
 ## Network
-# okhttp
-# # https://square.github.io/okhttp/
-okhttp = "4.12.0"
-# Retrofit
-# # https://github.com/square/retrofit
-retrofit = "2.11.0"
+# https://github.com/Foso/Ktorfit
+ktorfit = "2.3.0"
+# https://github.com/ktorio/ktor
+ktor = "3.1.0"
 
 ## Kotlin
 # https://github.com/JetBrains/kotlin
@@ -151,9 +149,12 @@ hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-comp
 
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
-okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
-retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-kotlin-serialization = { module = "com.squareup.retrofit2:converter-kotlinx-serialization", version.ref = "retrofit" }
+ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
+
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxImmutable" }
@@ -225,3 +226,4 @@ jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "composePlugin
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
 roborazzi-plugin = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
+ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
