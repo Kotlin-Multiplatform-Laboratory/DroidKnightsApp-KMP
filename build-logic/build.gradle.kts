@@ -36,5 +36,9 @@ gradlePlugin {
             id = "droidknights.compose.multiplatform"
             implementationClass = "com.droidknights.app.multiplatform.ComposeMultiplatformConventionPlugin"
         }
+        register("kotlinxSerialization") {
+            id = "droidknights.kotlin.serialization"
+            implementationClass = "com.droidknights.app.KotlinxSerializationPlugin"
+        }
     }
 }
