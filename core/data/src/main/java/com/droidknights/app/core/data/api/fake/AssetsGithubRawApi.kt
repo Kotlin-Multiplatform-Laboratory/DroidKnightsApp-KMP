@@ -10,7 +10,7 @@ import kotlinx.serialization.json.decodeFromStream
 import java.io.InputStream
 
 @OptIn(ExperimentalSerializationApi::class)
-internal class AssetsGithubRawApi(
+class AssetsGithubRawApi(
     private val json: Json,
     private val sponsors: InputStream,
     private val sessions: InputStream,
