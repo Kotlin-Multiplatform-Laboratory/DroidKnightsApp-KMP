@@ -1,4 +1,4 @@
-import com.droidknights.app.configureHiltAndroid
+import com.droidknights.app.configureKoinKotlin
 import com.droidknights.app.configureRoborazzi
 import com.droidknights.app.libs
 
@@ -18,7 +18,7 @@ android {
     }
 }
 
-configureHiltAndroid()
+configureKoinKotlin()
 configureRoborazzi()
 
 dependencies {
