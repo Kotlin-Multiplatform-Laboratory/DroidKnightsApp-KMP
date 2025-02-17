@@ -4,16 +4,13 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
-import javax.inject.Singleton
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
+import org.koin.core.annotation.Named
+import org.koin.core.annotation.Single
 
 @Module
-@InstallIn(SingletonComponent::class)
+@ComponentScan
 object DataStoreModule {
 
     private const val SETTING_DATASTORE_NAME = "SETTINGS_PREFERENCES"
@@ -24,19 +21,17 @@ object DataStoreModule {
 
     private val Context.sessionDataStore by preferencesDataStore(SESSION_DATASTORE_NAME)
 
-    @Provides
-    @Singleton
+    @Single
     @Named("setting")
     fun provideSettingsDataStore(
-        @ApplicationContext context: Context,
+        context: Context,
     ): DataStore<Preferences> =
         context.settingDataStore
 
-    @Provides
-    @Singleton
+    @Single
     @Named("session")
     fun provideSessionDataStore(
-        @ApplicationContext context: Context,
+        context: Context,
     ): DataStore<Preferences> =
         context.sessionDataStore
 }

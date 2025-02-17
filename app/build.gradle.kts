@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi.plugin)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
 }
 
 
@@ -56,6 +55,10 @@ kotlin {
     }
 }
 
+ksp {
+    arg("KOIN_CONFIG_CHECK", "true")
+    arg("KOIN_DEFAULT_MODULE", "false")
+}
 
 android {
     namespace = "com.droidknights.app"
@@ -105,12 +108,11 @@ dependencies {
     implementation(projects.core.navigation)
     implementation(projects.feature.main)
     implementation(projects.feature.home)
-
+    implementation(projects.feature.bookmark)
+    implementation(projects.core.data)
     implementation(projects.core.designsystem)
 
     implementation(projects.widget)
-
-    ksp(libs.hilt.android.compiler)
 
     baselineProfile(projects.baselineprofile)
     implementation(libs.androidx.profileinstaller)

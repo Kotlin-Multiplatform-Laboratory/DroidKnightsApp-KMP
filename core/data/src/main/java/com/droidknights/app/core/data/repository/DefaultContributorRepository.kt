@@ -9,9 +9,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
+import org.koin.core.annotation.Single
 
-internal class DefaultContributorRepository @Inject constructor(
+@Single
+internal class DefaultContributorRepository(
     private val githubApi: GithubApi,
     private val githubRawApi: GithubRawApi
 ) : ContributorRepository {

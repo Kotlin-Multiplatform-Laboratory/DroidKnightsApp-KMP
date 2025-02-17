@@ -4,9 +4,10 @@ import com.droidknights.app.core.data.repository.api.SessionRepository
 import com.droidknights.app.core.model.Session
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
+import org.koin.core.annotation.Factory
 
-class GetSessionsUseCase @Inject constructor(
+@Factory
+class GetSessionsUseCase(
     private val sessionRepository: SessionRepository,
 ) {
     operator fun invoke(): Flow<List<Session>> =

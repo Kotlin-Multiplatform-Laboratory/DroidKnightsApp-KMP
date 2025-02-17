@@ -4,11 +4,12 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import javax.inject.Inject
-import javax.inject.Named
 import kotlinx.coroutines.flow.map
+import org.koin.core.annotation.Named
+import org.koin.core.annotation.Single
 
-class DefaultSessionPreferencesDataSource @Inject constructor(
+@Single
+class DefaultSessionPreferencesDataSource(
     @Named("session") private val dataStore: DataStore<Preferences>,
 ) : SessionPreferencesDataSource {
     object PreferencesKey {

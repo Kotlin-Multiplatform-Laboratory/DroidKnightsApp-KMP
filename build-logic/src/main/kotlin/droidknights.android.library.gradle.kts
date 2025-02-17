@@ -1,5 +1,5 @@
 import com.droidknights.app.configureCoroutineAndroid
-import com.droidknights.app.configureHiltAndroid
+import com.droidknights.app.configureKoinKotlin
 import com.droidknights.app.configureKotest
 import com.droidknights.app.configureKotlinAndroid
 
@@ -11,4 +11,4 @@ plugins {
 configureKotlinAndroid()
 configureKotest()
 configureCoroutineAndroid()
-configureHiltAndroid()
+configureKoinKotlin()

@@ -7,19 +7,18 @@ import com.droidknights.app.core.domain.usecase.GetBookmarkedSessionIdsUseCase
 import com.droidknights.app.core.domain.usecase.GetSessionUseCase
 import com.droidknights.app.feature.session.model.SessionDetailEffect
 import com.droidknights.app.feature.session.model.SessionDetailUiState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.annotation.KoinViewModel
 
-@HiltViewModel
-class SessionDetailViewModel @Inject constructor(
+@KoinViewModel
+class SessionDetailViewModel(
     private val getSessionUseCase: GetSessionUseCase,
-    getBookmarkedSessionIdsUseCase: GetBookmarkedSessionIdsUseCase,
+    private val getBookmarkedSessionIdsUseCase: GetBookmarkedSessionIdsUseCase,
     private val bookmarkSessionUseCase: BookmarkSessionUseCase,
 ) : ViewModel() {
 

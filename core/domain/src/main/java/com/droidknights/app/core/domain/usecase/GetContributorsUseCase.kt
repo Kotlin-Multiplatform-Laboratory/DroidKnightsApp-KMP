@@ -3,9 +3,10 @@ package com.droidknights.app.core.domain.usecase
 import com.droidknights.app.core.data.repository.api.ContributorRepository
 import com.droidknights.app.core.model.ContributorGroup
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
+import org.koin.core.annotation.Factory
 
-class GetContributorsUseCase @Inject constructor(
+@Factory
+class GetContributorsUseCase(
     private val repository: ContributorRepository,
 ) {
 

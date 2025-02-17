@@ -4,9 +4,10 @@ import com.droidknights.app.core.data.repository.api.SettingsRepository
 import com.droidknights.app.core.datastore.datasource.SettingsPreferencesDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
+import org.koin.core.annotation.Single
 
-internal class DefaultSettingsRepository @Inject constructor(
+@Single
+class DefaultSettingsRepository(
     private val preferencesDataSource: SettingsPreferencesDataSource
 ) : SettingsRepository {
 

@@ -10,14 +10,12 @@ import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.glance.appwidget.updateAll
 import androidx.glance.state.PreferencesGlanceStateDefinition
-import com.droidknights.app.widget.di.WidgetModule
-import dagger.hilt.EntryPoints
-import dagger.hilt.android.AndroidEntryPoint
+import com.droidknights.app.core.domain.usecase.GetBookmarkedSessionsUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.java.KoinJavaComponent.getKoin
 
-@AndroidEntryPoint
 internal class DroidKnightsWidgetReceiver : GlanceAppWidgetReceiver() {
 
     override val glanceAppWidget: GlanceAppWidget = DroidKnightsWidget()
@@ -45,14 +43,11 @@ private fun getBookmarkedSessionAndUpdateWidget(
     context: Context,
     glanceAppWidget: GlanceAppWidget
 ) {
-    val widgetModule: WidgetModule = EntryPoints.get(
-        context.applicationContext,
-        WidgetModule::class.java
-    )
+    val getBookmarkedSessionsUseCase = getKoin().get<GetBookmarkedSessionsUseCase>()
 
     CoroutineScope(Dispatchers.IO).launch {
         val glanceIds = GlanceAppWidgetManager(context).getGlanceIds(DroidKnightsWidget::class.java)
-        widgetModule.getBookmarkedSessionsUseCase().invoke().collect { list ->
+        getBookmarkedSessionsUseCase().collect { list ->
             glanceIds.forEach { glanceId ->
                 updateAppWidgetState(
                     context = context,

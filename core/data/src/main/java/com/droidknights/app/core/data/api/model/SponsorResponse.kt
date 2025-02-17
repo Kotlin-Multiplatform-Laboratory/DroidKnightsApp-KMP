@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class SponsorResponse(
+data class SponsorResponse(
     @SerialName("name") val name: String,
     @SerialName("imageUrl") val imageUrl: String,
     @SerialName("homepage") val homepage: String,

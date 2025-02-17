@@ -3,9 +3,10 @@ package com.droidknights.app.core.domain.usecase
 import com.droidknights.app.core.model.Session
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import javax.inject.Inject
+import org.koin.core.annotation.Factory
 
-class GetBookmarkedSessionsUseCase @Inject constructor(
+@Factory
+class GetBookmarkedSessionsUseCase(
     private val getSessionsUseCase: GetSessionsUseCase,
     private val getBookmarkedSessionIdsUseCase: GetBookmarkedSessionIdsUseCase,
 ) {

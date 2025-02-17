@@ -4,7 +4,7 @@ import com.droidknights.app.core.data.api.model.ContributorResponse
 import de.jensklingenberg.ktorfit.http.GET
 import de.jensklingenberg.ktorfit.http.Path
 
-internal interface GithubApi {
+interface GithubApi {
 
     @GET("repos/{owner}/{name}/contributors")
     suspend fun getContributors(

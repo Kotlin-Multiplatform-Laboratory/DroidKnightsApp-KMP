@@ -5,7 +5,7 @@ import com.droidknights.app.core.data.api.model.SessionResponse
 import com.droidknights.app.core.data.api.model.SponsorResponse
 import de.jensklingenberg.ktorfit.http.GET
 
-internal interface GithubRawApi {
+ interface GithubRawApi {
 
     @GET("/droidknights/DroidKnightsApp/main/core/data/src/main/assets/sponsors.json")
     suspend fun getSponsors(): List<SponsorResponse>

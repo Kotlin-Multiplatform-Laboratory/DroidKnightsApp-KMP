@@ -2,9 +2,10 @@ package com.droidknights.app.core.domain.usecase
 
 import com.droidknights.app.core.data.repository.api.SessionRepository
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
+import org.koin.core.annotation.Factory
 
-class GetBookmarkedSessionIdsUseCase @Inject constructor(
+@Factory
+class GetBookmarkedSessionIdsUseCase(
     private val sessionRepository: SessionRepository,
 ) {
 

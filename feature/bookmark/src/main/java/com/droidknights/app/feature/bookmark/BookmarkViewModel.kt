@@ -7,7 +7,6 @@ import com.droidknights.app.core.domain.usecase.GetBookmarkedSessionsUseCase
 import com.droidknights.app.core.model.Session
 import com.droidknights.app.feature.bookmark.model.BookmarkItemUiState
 import com.droidknights.app.feature.bookmark.model.BookmarkUiState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.persistentSetOf
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.collections.immutable.toPersistentSet
@@ -22,10 +21,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.annotation.KoinViewModel
 
-@HiltViewModel
-class BookmarkViewModel @Inject constructor(
+@KoinViewModel
+class BookmarkViewModel(
     private val getBookmarkedSessionsUseCase: GetBookmarkedSessionsUseCase,
     private val deleteBookmarkedSessionUseCase: DeleteBookmarkedSessionUseCase,
 ) : ViewModel() {

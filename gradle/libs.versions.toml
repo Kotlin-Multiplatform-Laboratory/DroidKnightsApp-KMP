@@ -107,7 +107,7 @@ mockk = "1.13.16"
 
 # koin https://github.com/InsertKoinIO/koin
 koin = "4.0.2"
-koinComposeMultiplatform = "4.0.2"
+koin-annotations = "2.0.0-RC1"
 # kermit https://github.com/touchlab/Kermit
 kermit = "2.0.5"
 
@@ -194,8 +194,11 @@ verify-detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatt
 # koin
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinComposeMultiplatform" }
-koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinComposeMultiplatform" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
+koin-compose-viewmodel-navigation = {module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "koin"}
+koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations" }
+koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations" }
 
 # kermit
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }

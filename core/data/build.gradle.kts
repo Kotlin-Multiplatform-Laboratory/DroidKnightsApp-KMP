@@ -2,7 +2,6 @@ import com.droidknights.app.setNamespace
 
 plugins {
     id("droidknights.android.library")
-    id("droidknights.android.hilt")
     id("kotlinx-serialization")
     alias(libs.plugins.ktorfit)
 }
