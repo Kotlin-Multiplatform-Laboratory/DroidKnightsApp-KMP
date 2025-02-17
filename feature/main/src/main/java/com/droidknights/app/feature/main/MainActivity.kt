@@ -11,10 +11,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.widget.DroidKnightsWidget.Companion.KEY_SESSION_ID
 import com.droidknights.app.widget.sendWidgetUpdateCommand
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
     private val sessionIdFromWidget: MutableStateFlow<String?> = MutableStateFlow(null)
