@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 import org.koin.core.annotation.Factory
 
 @Factory
-class GetSessionsUseCase (
+class GetSessionsUseCase(
     private val sessionRepository: SessionRepository,
 ) {
     operator fun invoke(): Flow<List<Session>> =

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Factory
 
 @Factory
-class GetBookmarkedSessionIdsUseCase (
+class GetBookmarkedSessionIdsUseCase(
     private val sessionRepository: SessionRepository,
 ) {
 

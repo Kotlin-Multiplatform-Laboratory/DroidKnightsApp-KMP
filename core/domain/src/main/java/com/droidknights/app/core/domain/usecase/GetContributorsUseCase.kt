@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Factory
 
 @Factory
-class GetContributorsUseCase (
+class GetContributorsUseCase(
     private val repository: ContributorRepository,
 ) {
 

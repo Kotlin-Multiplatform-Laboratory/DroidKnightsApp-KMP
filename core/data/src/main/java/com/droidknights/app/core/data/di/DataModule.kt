@@ -32,7 +32,6 @@ class DataModule {
     fun bindSessionLocalDataSource(
         dataSource: DefaultSessionPreferencesDataSource,
     ): SessionPreferencesDataSource = dataSource
-
 }
 
 @Module
@@ -71,4 +70,3 @@ class FakeModule {
             contributors = context.assets.open("contributors.json"),
         )
 }
-

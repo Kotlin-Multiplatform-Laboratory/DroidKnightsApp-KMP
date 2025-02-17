@@ -4,8 +4,6 @@ import com.droidknights.app.core.data.api.GithubApi
 import com.droidknights.app.core.data.api.GithubRawApi
 import com.droidknights.app.core.data.api.createGithubApi
 import com.droidknights.app.core.data.api.createGithubRawApi
-import com.droidknights.app.core.data.di.qualifier.GitRaw
-import com.droidknights.app.core.data.di.qualifier.Github
 import kotlinx.serialization.json.Json
 import de.jensklingenberg.ktorfit.Ktorfit
 import io.ktor.client.HttpClient
