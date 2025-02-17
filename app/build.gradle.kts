@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi.plugin)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
 }
 
 
@@ -48,7 +47,6 @@ kotlin {
 
             api(libs.koin.core)
             implementation(libs.koin.compose)
-            api(libs.koin.annotations)
         }
 
         iosMain.dependencies {
@@ -110,12 +108,11 @@ dependencies {
     implementation(projects.core.navigation)
     implementation(projects.feature.main)
     implementation(projects.feature.home)
-
+    implementation(projects.feature.bookmark)
+    implementation(projects.core.data)
     implementation(projects.core.designsystem)
 
     implementation(projects.widget)
-
-    ksp(libs.hilt.android.compiler)
 
     baselineProfile(projects.baselineprofile)
     implementation(libs.androidx.profileinstaller)
@@ -123,11 +120,4 @@ dependencies {
     testImplementation(projects.core.testing)
 
     coreLibraryDesugaring(libs.android.desugarJdkLibs)
-}
-
-dependencies {
-    add("kspCommonMainMetadata", libs.koin.ksp.compiler)
-    add("kspAndroid", libs.koin.ksp.compiler)
-    add("kspIosArm64", libs.koin.ksp.compiler)
-    add("kspIosSimulatorArm64", libs.koin.ksp.compiler)
 }
