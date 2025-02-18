@@ -6,16 +6,10 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import io.sellmair.evas.Events
-import io.sellmair.evas.States
-import io.sellmair.evas.compose.installEvas
 import org.jetbrains.compose.reload.DevelopmentEntryPoint
 import java.awt.Color
 
 fun main() {
-
-    val events = Events()
-    val states = States()
 
     application {
         Window(
@@ -26,10 +20,8 @@ fun main() {
             )
         ) {
             window.background = Color.WHITE
-            installEvas(events, states) {
-                DevelopmentEntryPoint {
-                    App()
-                }
+            DevelopmentEntryPoint {
+                App()
             }
         }
     }

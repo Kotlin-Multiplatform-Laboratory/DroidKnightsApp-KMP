@@ -55,8 +55,6 @@ kotlin {
         }
 
         jvmMain.dependencies {
-            implementation("io.sellmair:evas:1.2.0")
-            implementation("io.sellmair:evas-compose:1.2.0")
             implementation(compose.desktop.currentOs)
         }
 
@@ -70,10 +68,6 @@ compose.desktop {
     application {
         mainClass = "com.droidknights.app.MainKt"
     }
-}
-
-composeCompiler {
-    featureFlags.add(ComposeFeatureFlag.OptimizeNonSkippingGroups)
 }
 
 android {
