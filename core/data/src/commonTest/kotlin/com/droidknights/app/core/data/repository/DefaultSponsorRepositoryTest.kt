@@ -6,6 +6,7 @@ import com.droidknights.app.core.model.Sponsor
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.serialization.json.Json
+import kotlin.invoke
 
 internal class DefaultSponsorRepositoryTest : StringSpec() {
 

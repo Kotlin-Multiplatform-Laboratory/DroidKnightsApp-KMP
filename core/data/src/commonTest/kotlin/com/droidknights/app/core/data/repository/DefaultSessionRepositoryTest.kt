@@ -9,6 +9,7 @@ import com.droidknights.app.core.model.Session
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.datetime.LocalDateTime
+import kotlin.invoke
 
 internal class DefaultSessionRepositoryTest : StringSpec() {
 
