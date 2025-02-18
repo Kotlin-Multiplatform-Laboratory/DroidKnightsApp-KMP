@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import org.koin.core.annotation.Single
 
-@Single
+@Single(binds = [ContributorRepository::class])
 internal class DefaultContributorRepository(
     private val githubApi: GithubApi,
     private val githubRawApi: GithubRawApi

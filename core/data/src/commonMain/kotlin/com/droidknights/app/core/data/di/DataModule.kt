@@ -22,7 +22,6 @@ import org.koin.core.annotation.Single
 @Module
 @ComponentScan
 class DataModule {
-
     @Single(binds = [SettingsRepository::class])
     fun bindsSettingsRepository(
         repository: DefaultSettingsRepository

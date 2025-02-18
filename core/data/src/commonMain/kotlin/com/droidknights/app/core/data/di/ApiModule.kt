@@ -19,6 +19,12 @@ import org.koin.core.annotation.Single
 class ApiModule {
 
     @Single
+    fun provideJson(): Json = Json {
+        ignoreUnknownKeys = true
+        coerceInputValues = true
+    }
+
+    @Single
     fun provideHttpClient(
         json: Json,
     ): HttpClient = HttpClient {
@@ -55,9 +61,5 @@ class ApiModule {
         @Named("gitraw") ktorfit: Ktorfit
     ): GithubRawApi = ktorfit.createGithubRawApi()
 
-    @Single
-    fun provideJson(): Json = Json {
-        ignoreUnknownKeys = true
-        coerceInputValues = true
-    }
+
 }

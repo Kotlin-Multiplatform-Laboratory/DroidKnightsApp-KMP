@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.koin.core.annotation.Single
 
-@Single
+@Single(binds = [SettingsRepository::class])
 class DefaultSettingsRepository(
     private val preferencesDataSource: SettingsPreferencesDataSource
 ) : SettingsRepository {

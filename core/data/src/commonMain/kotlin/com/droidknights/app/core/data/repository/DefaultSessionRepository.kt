@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import org.koin.core.annotation.Single
 
-@Single
+@Single(binds = [SessionRepository::class])
 internal class DefaultSessionRepository(
     private val githubRawApi: GithubRawApi,
     private val sessionDataSource: SessionPreferencesDataSource

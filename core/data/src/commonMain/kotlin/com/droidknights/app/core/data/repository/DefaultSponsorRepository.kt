@@ -6,7 +6,7 @@ import com.droidknights.app.core.data.repository.api.SponsorRepository
 import com.droidknights.app.core.model.Sponsor
 import org.koin.core.annotation.Single
 
-@Single
+@Single(binds = [SponsorRepository::class])
 internal class DefaultSponsorRepository(
     private val githubRawApi: GithubRawApi,
 ) : SponsorRepository {
