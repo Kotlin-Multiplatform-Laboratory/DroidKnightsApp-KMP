@@ -9,6 +9,7 @@ dependencies {
     implementation(libs.verify.detektPlugin)
     compileOnly(libs.compose.compiler.gradle.plugin)
     compileOnly(libs.compose.gradle.plugin)
+    compileOnly(libs.ksp.gradle.plugin)
 }
 
 tasks {
@@ -39,6 +40,10 @@ gradlePlugin {
         register("kotlinxSerialization") {
             id = "droidknights.kotlin.serialization"
             implementationClass = "com.droidknights.app.KotlinxSerializationPlugin"
+        }
+        register("koin") {
+            id = "droidknights.kotlin.koin"
+            implementationClass = "com.droidknights.app.KoinPlugin"
         }
     }
 }
