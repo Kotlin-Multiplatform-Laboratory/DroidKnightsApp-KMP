@@ -2,6 +2,7 @@ import com.droidknights.app.setNamespace
 
 plugins {
     id("droidknights.kotlin.multiplatform")
+    id("droidknights.compose.multiplatform")
     id("droidknights.kotlin.koin")
     id("droidknights.kotlin.serialization")
     id("droidknights.kotlin.ktorfit")
@@ -17,9 +18,13 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.serialization.json.okio)
             implementation(libs.okio)
+            implementation(compose.components.resources)
         }
         commonTest.dependencies {
             implementation(libs.turbine)
+        }
+        androidMain.dependencies {
+            implementation(libs.koin.android)
         }
         iosMain.dependencies {
             implementation(projects.core.model)
@@ -31,4 +36,7 @@ kotlin {
 
 android {
     setNamespace("core.data")
+    sourceSets["main"].apply {
+        assets.srcDirs("src/commonMain/resources/assets")
+    }
 }
