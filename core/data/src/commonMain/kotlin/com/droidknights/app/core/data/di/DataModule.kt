@@ -1,9 +1,9 @@
 package com.droidknights.app.core.data.di
 
-import android.content.Context
 import com.droidknights.app.core.data.api.GithubApi
 import com.droidknights.app.core.data.api.GithubRawApi
 import com.droidknights.app.core.data.api.fake.AssetsGithubRawApi
+import com.droidknights.app.core.data.file.defaultAssetFileProvider
 import com.droidknights.app.core.data.repository.DefaultContributorRepository
 import com.droidknights.app.core.data.repository.DefaultSessionRepository
 import com.droidknights.app.core.data.repository.DefaultSettingsRepository
@@ -59,13 +59,12 @@ class FakeModule {
 
     @Single
     fun provideGithubRawApi(
-        context: Context,
         json: Json,
     ): AssetsGithubRawApi =
         AssetsGithubRawApi(
             json = json,
-            sponsors = context.assets.open("sponsors.json"),
-            sessions = context.assets.open("sessions.json"),
-            contributors = context.assets.open("contributors.json"),
+            sponsors = defaultAssetFileProvider.get("sponsors.json"),
+            sessions = defaultAssetFileProvider.get("sessions.json"),
+            contributors = defaultAssetFileProvider.get("contributors.json"),
         )
 }
