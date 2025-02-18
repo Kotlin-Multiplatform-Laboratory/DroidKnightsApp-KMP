@@ -1,3 +1,5 @@
+import org.jetbrains.compose.reload.ComposeHotRun
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -9,6 +11,7 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi.plugin)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.compose.hotreload)
 }
 
 
@@ -18,6 +21,8 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_17)
         }
     }
+
+    jvm()
 
     listOf(
         iosArm64(),
@@ -49,15 +54,26 @@ kotlin {
             implementation(libs.koin.compose)
         }
 
+        jvmMain.dependencies {
+            implementation("io.sellmair:evas:1.2.0")
+            implementation("io.sellmair:evas-compose:1.2.0")
+            implementation(compose.desktop.currentOs)
+        }
+
         iosMain.dependencies {
 
         }
     }
 }
 
-ksp {
-    arg("KOIN_CONFIG_CHECK", "true")
-    arg("KOIN_DEFAULT_MODULE", "false")
+compose.desktop {
+    application {
+        mainClass = "com.droidknights.app.MainKt"
+    }
+}
+
+composeCompiler {
+    featureFlags.add(ComposeFeatureFlag.OptimizeNonSkippingGroups)
 }
 
 android {
@@ -121,4 +137,8 @@ dependencies {
     testImplementation(projects.core.testing)
 
     coreLibraryDesugaring(libs.android.desugarJdkLibs)
+}
+
+tasks.register<ComposeHotRun>("runHot") {
+    mainClass.set("com.droidknights.app.MainKt")
 }
