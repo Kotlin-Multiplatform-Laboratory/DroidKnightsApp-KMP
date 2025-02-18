@@ -2,15 +2,12 @@ package com.droidknights.app.core.datastore
 
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import com.droidknights.app.core.datastore.datasource.SettingsPreferencesDataSource
-import io.kotest.core.spec.style.StringSpec
-import kotlin.test.assertFalse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.TestDispatcher
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.rules.TemporaryFolder
+import kotlin.invoke
+import kotlin.test.assertFalse
 
 internal class SettingsPreferencesDataSourceTest : StringSpec() {
 
