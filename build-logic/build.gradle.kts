@@ -45,5 +45,9 @@ gradlePlugin {
             id = "droidknights.kotlin.koin"
             implementationClass = "com.droidknights.app.KoinPlugin"
         }
+        register("ktorfit") {
+            id = "droidknights.kotlin.ktorfit"
+            implementationClass = "com.droidknights.app.KtorfitPlugin"
+        }
     }
 }

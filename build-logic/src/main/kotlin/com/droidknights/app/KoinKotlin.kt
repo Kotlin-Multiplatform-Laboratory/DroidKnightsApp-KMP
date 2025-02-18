@@ -1,6 +1,5 @@
 package com.droidknights.app
 
-import com.android.build.gradle.internal.utils.isKspPluginApplied
 import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -32,10 +31,10 @@ class KoinPlugin : Plugin<Project> {
                 add("kspIosArm64", libs.findLibrary("koin-ksp-compiler").get())
                 add("kspIosSimulatorArm64", libs.findLibrary("koin-ksp-compiler").get())
             }
-            extensions.configure<KspExtension> {
-                arg("KOIN_CONFIG_CHECK", "true")
-                arg("KOIN_DEFAULT_MODULE", "false")
-            }
+        }
+        extensions.configure<KspExtension> {
+            arg("KOIN_CONFIG_CHECK", "true")
+            arg("KOIN_DEFAULT_MODULE", "false")
         }
     }
 }
