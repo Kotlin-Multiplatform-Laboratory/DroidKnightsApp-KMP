@@ -1,16 +1,19 @@
 import com.droidknights.app.setNamespace
 
 plugins {
-    id("droidknights.android.library")
+    id("droidknights.kotlin.multiplatform")
+    id("droidknights.kotlin.koin")
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.core.dataApi)
+            implementation(projects.core.model)
+        }
+    }
 }
 
 android {
     setNamespace("core.domain")
-}
-
-dependencies {
-    implementation(projects.core.dataApi)
-    implementation(projects.core.model)
-
-    implementation(libs.inject)
 }
