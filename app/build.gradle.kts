@@ -110,6 +110,7 @@ dependencies {
     implementation(projects.feature.home)
     implementation(projects.feature.bookmark)
     implementation(projects.core.data)
+    implementation(projects.core.domain)
     implementation(projects.core.designsystem)
 
     implementation(projects.widget)

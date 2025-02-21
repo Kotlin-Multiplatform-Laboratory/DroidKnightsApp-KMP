@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 import org.koin.core.annotation.Named
 import org.koin.core.annotation.Single
 
-@Single
+@Single(binds = [SessionPreferencesDataSource::class])
 class DefaultSessionPreferencesDataSource(
     @Named("session") private val dataStore: DataStore<Preferences>,
 ) : SessionPreferencesDataSource {

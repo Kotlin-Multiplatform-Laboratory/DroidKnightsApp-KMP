@@ -60,6 +60,4 @@ class ApiModule {
     fun provideGitRawApi(
         @Named("gitraw") ktorfit: Ktorfit
     ): GithubRawApi = ktorfit.createGithubRawApi()
-
-
 }
