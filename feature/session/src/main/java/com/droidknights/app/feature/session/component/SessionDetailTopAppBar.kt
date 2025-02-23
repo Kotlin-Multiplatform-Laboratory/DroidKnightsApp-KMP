@@ -1,19 +1,12 @@
 package com.droidknights.app.feature.session.component
 
-import android.content.res.Configuration
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.droidknights.app.core.designsystem.component.KnightsTopAppBar
 import com.droidknights.app.core.designsystem.component.TopAppBarNavigationType
 import com.droidknights.app.core.designsystem.theme.Gray
-import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.Purple01
 import com.droidknights.app.feature.session.R
 
@@ -59,17 +52,17 @@ private fun BookmarkToggleButton(
     }
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun SessionDetailTopAppBarPreview() {
-    KnightsTheme {
-        var state by remember { mutableStateOf(false) }
-        SessionDetailTopAppBar(
-            bookmarked = state,
-            onClickBookmark = {
-                state = it
-            }
-        ) { }
-    }
-}
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+//@Composable
+//private fun SessionDetailTopAppBarPreview() {
+//    KnightsTheme {
+//        var state by remember { mutableStateOf(false) }
+//        SessionDetailTopAppBar(
+//            bookmarked = state,
+//            onClickBookmark = {
+//                state = it
+//            }
+//        ) { }
+//    }
+//}

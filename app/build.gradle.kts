@@ -42,6 +42,8 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.hilt.android)
             implementation(libs.hilt.core)
+
+            implementation(project(":feature:session"))
         }
 
         commonMain.dependencies {
@@ -51,6 +53,8 @@ kotlin {
 
             api(libs.koin.core)
             implementation(libs.koin.compose)
+
+            implementation(project(":feature:session"))
         }
 
         jvmMain.dependencies {
@@ -123,6 +127,7 @@ dependencies {
     implementation(projects.core.designsystem)
 
     implementation(projects.widget)
+    implementation(project(":feature:session"))
 
     baselineProfile(projects.baselineprofile)
     implementation(libs.androidx.profileinstaller)

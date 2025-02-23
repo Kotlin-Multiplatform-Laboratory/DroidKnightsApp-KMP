@@ -17,18 +17,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.model.Room
@@ -44,12 +37,13 @@ import com.droidknights.app.feature.session.model.SessionDetailUiState
 import com.droidknights.app.widget.sendWidgetUpdateCommand
 import kotlinx.coroutines.delay
 import kotlinx.datetime.LocalDateTime
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun SessionDetailScreen(
     sessionId: String,
     onBackClick: () -> Unit,
-    viewModel: SessionDetailViewModel = hiltViewModel(),
+    viewModel: SessionDetailViewModel = koinViewModel(),
 ) {
     val scrollState = rememberScrollState()
     val sessionUiState by viewModel.sessionUiState.collectAsStateWithLifecycle()
@@ -193,49 +187,49 @@ private val SampleSessionNoContent = Session(
     isBookmarked = true
 )
 
-class SessionDetailContentProvider : PreviewParameterProvider<Session> {
-    override val values: Sequence<Session> = sequenceOf(
-        SampleSessionNoContent,
-        SampleSessionHasContent
-    )
-}
+//class SessionDetailContentProvider : PreviewParameterProvider<Session> {
+//    override val values: Sequence<Session> = sequenceOf(
+//        SampleSessionNoContent,
+//        SampleSessionHasContent
+//    )
+//}
+//
+//@Preview
+//@Composable
+//private fun SessionDetailTopAppBarPreview() {
+//    KnightsTheme {
+//        var state by remember { mutableStateOf(false) }
+//        SessionDetailTopAppBar(
+//            bookmarked = state,
+//            onClickBookmark = {
+//                state = it
+//            }
+//        ) { }
+//    }
+//}
 
-@Preview
-@Composable
-private fun SessionDetailTopAppBarPreview() {
-    KnightsTheme {
-        var state by remember { mutableStateOf(false) }
-        SessionDetailTopAppBar(
-            bookmarked = state,
-            onClickBookmark = {
-                state = it
-            }
-        ) { }
-    }
-}
-
-@Preview
-@Composable
-private fun SessionDetailContentPreview(
-    @PreviewParameter(SessionDetailContentProvider::class) session: Session,
-) {
-    KnightsTheme {
-        SessionDetailContent(session = session)
-    }
-}
-
-@Preview
-@Composable
-private fun SessionDetailSpeakerPreview() {
-    KnightsTheme {
-        SessionDetailSpeaker(SampleSessionHasContent.speakers.first())
-    }
-}
-
-@Preview
-@Composable
-private fun SessionOverviewPreview() {
-    KnightsTheme {
-        SessionOverview(SampleSessionHasContent.content)
-    }
-}
+//@Preview
+//@Composable
+//private fun SessionDetailContentPreview(
+//    @PreviewParameter(SessionDetailContentProvider::class) session: Session,
+//) {
+//    KnightsTheme {
+//        SessionDetailContent(session = session)
+//    }
+//}
+//
+//@Preview
+//@Composable
+//private fun SessionDetailSpeakerPreview() {
+//    KnightsTheme {
+//        SessionDetailSpeaker(SampleSessionHasContent.speakers.first())
+//    }
+//}
+//
+//@Preview
+//@Composable
+//private fun SessionOverviewPreview() {
+//    KnightsTheme {
+//        SessionOverview(SampleSessionHasContent.content)
+//    }
+//}
