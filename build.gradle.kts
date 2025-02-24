@@ -22,6 +22,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.roborazzi.plugin) apply false
     alias(libs.plugins.ktorfit) apply false
+    alias(libs.plugins.compose.hotreload) apply false
 }
 
 apply {
