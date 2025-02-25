@@ -11,18 +11,19 @@ android {
 
 kotlin {
     sourceSets {
-        commonMain.dependencies {
-            implementation(libs.kotlinx.immutable)
-        }
         androidMain.dependencies {
-            implementation(project(":core:model"))
-            implementation(project(":core:data"))
-            implementation(project(":core:designsystem"))
-            implementation(project(":core:domain"))
-            implementation(project(":core:navigation"))
-            implementation(project(":core:ui"))
-
+            implementation(projects.core.model)
+            implementation(projects.core.data)
+            implementation(projects.core.designsystem)
+            implementation(projects.core.domain)
+            implementation(projects.core.navigation)
+            implementation(projects.core.ui)
             implementation(projects.widget)
+        }
+        commonMain.dependencies {
+            implementation(projects.core.model)
+
+            implementation(libs.kotlinx.immutable)
         }
         iosMain.dependencies {
 

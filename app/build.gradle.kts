@@ -36,25 +36,26 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
+            implementation(projects.feature.session)
+
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 
             implementation(libs.koin.android)
             implementation(libs.hilt.android)
             implementation(libs.hilt.core)
-
-            implementation(project(":feature:session"))
         }
 
         commonMain.dependencies {
+            implementation(projects.core.model)
+            implementation(projects.core.datastore)
+
             implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
             api(libs.koin.core)
             implementation(libs.koin.compose)
-
-            implementation(project(":feature:session"))
         }
 
         jvmMain.dependencies {
@@ -127,7 +128,6 @@ dependencies {
     implementation(projects.core.designsystem)
 
     implementation(projects.widget)
-    implementation(project(":feature:session"))
 
     baselineProfile(projects.baselineprofile)
     implementation(libs.androidx.profileinstaller)

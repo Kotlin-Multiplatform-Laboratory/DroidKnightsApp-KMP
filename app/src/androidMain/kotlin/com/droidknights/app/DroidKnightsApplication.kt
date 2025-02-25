@@ -2,7 +2,10 @@ package com.droidknights.app
 
 import android.app.Application
 import com.droidknights.app.core.data.di.ApiModule
+import com.droidknights.app.core.data.di.FakeModule
+import com.droidknights.app.core.datastore.di.DataStoreModule
 import com.droidknights.app.core.domain.UseCaseModule
+import com.droidknights.app.feature.session.SessionModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,7 +19,10 @@ class DroidKnightsApplication : Application() {
             androidLogger()
             modules(
                 ApiModule().module,
-                UseCaseModule().module
+                UseCaseModule().module,
+                FakeModule().module,
+                SessionModule().module,
+                DataStoreModule().module
             )
         }
     }
