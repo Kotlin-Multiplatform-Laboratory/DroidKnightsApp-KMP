@@ -19,7 +19,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-//import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
@@ -33,7 +32,6 @@ import com.droidknights.app.feature.session.component.SessionDetailSpeaker
 import com.droidknights.app.feature.session.component.SessionDetailTopAppBar
 import com.droidknights.app.feature.session.model.SessionDetailEffect
 import com.droidknights.app.feature.session.model.SessionDetailUiState
-//import com.droidknights.app.widget.sendWidgetUpdateCommand
 import kotlinx.coroutines.delay
 import kotlinx.datetime.LocalDateTime
 import org.jetbrains.compose.resources.stringResource
