@@ -14,7 +14,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core.model)
             implementation(projects.core.designsystem)
-            implementation(libs.compose.component.resource)
+            implementation(compose.components.resources)
         }
     }
 }
