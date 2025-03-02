@@ -9,20 +9,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.Graphite
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.Purple01
-import com.droidknights.app.feature.session.R
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.session_detail_bookmark_popup_message
+import droidknights.feature.session.generated.resources.session_detail_unbookmark_popup_message
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun SessionDetailBookmarkStatePopup(bookmarked: Boolean) {
     val messageStringRes by rememberUpdatedState(
         newValue = if (bookmarked) {
-            R.string.session_detail_bookmark_popup_message
+            Res.string.session_detail_bookmark_popup_message
         } else {
-            R.string.session_detail_unbookmark_popup_message
+            Res.string.session_detail_unbookmark_popup_message
         }
     )
 
@@ -35,7 +37,7 @@ internal fun SessionDetailBookmarkStatePopup(bookmarked: Boolean) {
     ) {
         Text(
             modifier = Modifier.padding(horizontal = 18.dp, vertical = 15.dp),
-            text = stringResource(id = messageStringRes),
+            text = stringResource(resource = messageStringRes),
             style = KnightsTheme.typography.bodyMediumR,
             color = Purple01
         )

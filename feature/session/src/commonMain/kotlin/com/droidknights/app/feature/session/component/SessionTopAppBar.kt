@@ -39,8 +39,9 @@ import com.droidknights.app.core.designsystem.component.TopAppBarNavigationType
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.model.Room
 import com.droidknights.app.core.ui.RoomText
-import com.droidknights.app.feature.session.R
 import com.droidknights.app.feature.session.model.SessionState
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.session_title
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.launch
@@ -81,7 +82,7 @@ internal fun SessionTopAppBar(
             exit = exit,
         ) {
             KnightsTopAppBar(
-                titleRes = R.string.session_title,
+                titleRes = Res.string.session_title,
                 navigationType = TopAppBarNavigationType.Close,
                 navigationIconContentDescription = null,
                 modifier = Modifier.statusBarsPadding(),

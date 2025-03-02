@@ -18,8 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.IconTextChip
 import com.droidknights.app.core.designsystem.component.KnightsCard
@@ -32,7 +30,14 @@ import com.droidknights.app.core.designsystem.theme.Purple01
 import com.droidknights.app.core.designsystem.theme.Purple01A30
 import com.droidknights.app.core.model.Session
 import com.droidknights.app.core.model.Speaker
-import com.droidknights.app.feature.session.R
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.bookmark
+import droidknights.feature.session.generated.resources.ic_flagbookmark
+import droidknights.feature.session.generated.resources.ic_session_bookmark_filled
+import droidknights.feature.session.generated.resources.placeholder_speaker
+import droidknights.feature.session.generated.resources.session_category
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun SessionCard(
@@ -133,10 +138,10 @@ private fun SessionTrackInfo(
         if (session.isBookmarked) {
             Spacer(modifier = Modifier.width(8.dp))
             IconTextChip(
-                text = stringResource(id = R.string.bookmark),
+                text = stringResource(resource = Res.string.bookmark),
                 containerColor = Purple01A30,
                 labelColor = Purple01,
-                iconPainter = painterResource(id = R.drawable.ic_session_bookmark_filled),
+                iconPainter = painterResource(resource = Res.drawable.ic_session_bookmark_filled),
                 iconTint = Purple01
             )
         }
@@ -165,7 +170,7 @@ private fun SessionSpeakers(
                     modifier = Modifier
                         .size(80.dp)
                         .clip(CircleShape),
-                    placeholder = painterResource(id = com.droidknights.app.core.ui.R.drawable.placeholder_speaker),
+                    placeholder = painterResource(resource = Res.drawable.placeholder_speaker),
                 )
             }
         }
@@ -175,7 +180,7 @@ private fun SessionSpeakers(
 @Composable
 private fun CategoryChip() {
     TextChip(
-        text = stringResource(id = R.string.session_category),
+        text = stringResource(resource = Res.string.session_category),
         containerColor = DarkGray,
         labelColor = LightGray,
     )
@@ -186,7 +191,7 @@ private fun BookmarkImage(
     modifier: Modifier = Modifier,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.ic_flagbookmark),
+        painter = painterResource(resource = Res.drawable.ic_flagbookmark),
         contentDescription = null,
         modifier = modifier
             .size(

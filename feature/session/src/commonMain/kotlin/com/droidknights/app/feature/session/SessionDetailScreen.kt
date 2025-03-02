@@ -19,8 +19,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
+//import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
@@ -34,10 +33,12 @@ import com.droidknights.app.feature.session.component.SessionDetailSpeaker
 import com.droidknights.app.feature.session.component.SessionDetailTopAppBar
 import com.droidknights.app.feature.session.model.SessionDetailEffect
 import com.droidknights.app.feature.session.model.SessionDetailUiState
-import com.droidknights.app.widget.sendWidgetUpdateCommand
+//import com.droidknights.app.widget.sendWidgetUpdateCommand
 import kotlinx.coroutines.delay
 import kotlinx.datetime.LocalDateTime
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import droidknights.feature.session.generated.resources.*
 
 @Composable
 internal fun SessionDetailScreen(
@@ -49,13 +50,13 @@ internal fun SessionDetailScreen(
     val sessionUiState by viewModel.sessionUiState.collectAsStateWithLifecycle()
     val effect by viewModel.sessionUiEffect.collectAsStateWithLifecycle()
 
-    val context = LocalContext.current
+//    val context = LocalContext.current
 
-    LaunchedEffect(effect) {
-        if (effect is SessionDetailEffect.ShowToastForBookmarkState) {
-            sendWidgetUpdateCommand(context)
-        }
-    }
+//    LaunchedEffect(effect) {
+//        if (effect is SessionDetailEffect.ShowToastForBookmarkState) {
+//            sendWidgetUpdateCommand(context)
+//        }
+//    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -138,7 +139,7 @@ private fun SessionDetailContent(session: Session) {
 private fun SessionOverview(content: String) {
     Column {
         Text(
-            text = stringResource(id = R.string.session_overview_title),
+            text = stringResource(resource = Res.string.session_overview_title),
             style = KnightsTheme.typography.titleSmallB,
             color = MaterialTheme.colorScheme.onSecondaryContainer
         )

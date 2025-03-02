@@ -10,13 +10,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.NetworkImage
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.model.Speaker
-import com.droidknights.app.core.ui.R
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.placeholder_speaker
+import droidknights.feature.session.generated.resources.session_detail_speaker
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun SessionDetailSpeaker(
@@ -29,13 +31,13 @@ internal fun SessionDetailSpeaker(
             modifier = Modifier
                 .size(108.dp)
                 .clip(CircleShape),
-            placeholder = painterResource(id = R.drawable.placeholder_speaker)
+            placeholder = painterResource(resource = Res.drawable.placeholder_speaker)
         )
 
         Spacer(Modifier.height(16.dp))
 
         Text(
-            text = stringResource(id = com.droidknights.app.feature.session.R.string.session_detail_speaker),
+            text = stringResource(resource = Res.string.session_detail_speaker),
             style = KnightsTheme.typography.labelSmallM,
             color = MaterialTheme.colorScheme.onSecondaryContainer,
         )
