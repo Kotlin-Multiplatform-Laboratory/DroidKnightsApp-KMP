@@ -1,7 +1,5 @@
 package com.droidknights.app.feature.setting.component
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,30 +20,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.KnightsCard
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.LocalDarkTheme
-import com.droidknights.app.feature.setting.R
+import droidknights.feature.setting.generated.resources.Res
+import droidknights.feature.setting.generated.resources.dark_mode
+import droidknights.feature.setting.generated.resources.img_dark_mode
+import droidknights.feature.setting.generated.resources.img_light_mode
+import droidknights.feature.setting.generated.resources.light_mode
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun LightDarkThemeCard(
     modifier: Modifier = Modifier,
     onChangeDarkTheme: (Boolean) -> Unit,
     darkTheme: Boolean = LocalDarkTheme.current,
-    @StringRes lightModeTitleRes: Int = R.string.light_mode,
-    @StringRes darkModeTitleRes: Int = R.string.dark_mode,
-    @DrawableRes lightModeImageRes: Int = R.drawable.img_light_mode,
-    @DrawableRes darkModeImageRes: Int = R.drawable.img_dark_mode,
+    lightModeTitleRes: StringResource = Res.string.light_mode,
+    darkModeTitleRes: StringResource = Res.string.dark_mode,
+    lightModeImageRes: DrawableResource = Res.drawable.img_light_mode,
+    darkModeImageRes: DrawableResource = Res.drawable.img_dark_mode,
 ) {
     CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onPrimaryContainer) {
         KnightsCard(modifier = modifier) {
             Column {
                 Text(
-                    text = stringResource(id = R.string.setting),
+                    text = "",
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                     style = KnightsTheme.typography.headlineSmallBL,
                     modifier = Modifier.padding(top = 24.dp, start = 24.dp),
@@ -80,12 +83,13 @@ internal fun LightDarkThemeCard(
     }
 }
 
+//
 @Composable
 private fun ThemeCard(
     modifier: Modifier = Modifier,
     selected: Boolean,
-    @StringRes titleRes: Int,
-    @DrawableRes imageRes: Int,
+    titleRes: StringResource,
+    imageRes: DrawableResource,
     onClick: () -> Unit,
 ) {
     Column(
@@ -97,12 +101,14 @@ private fun ThemeCard(
             onClick = onClick,
         ) {
             Image(
-                painter = painterResource(id = imageRes), contentDescription = null, modifier = Modifier.aspectRatio(1f)
+                painter = painterResource(imageRes),
+                contentDescription = null,
+                modifier = Modifier.aspectRatio(1f)
             )
         }
 
         Text(
-            text = stringResource(id = titleRes),
+            text = stringResource(titleRes),
             modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
             color = MaterialTheme.colorScheme.onPrimaryContainer,
             style = KnightsTheme.typography.titleSmallM140,
@@ -118,39 +124,39 @@ private fun ThemeCard(
         )
     }
 }
-
-@Preview
-@Composable
-private fun LightDarkThemeCardPreview() {
-    KnightsTheme {
-        LightDarkThemeCard(
-            onChangeDarkTheme = { },
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun LightModeThemeCardPreview() {
-    KnightsTheme {
-        ThemeCard(
-            selected = false,
-            titleRes = R.string.light_mode,
-            imageRes = R.drawable.img_light_mode,
-            onClick = { },
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun DarkModeThemeCardPreview() {
-    KnightsTheme {
-        ThemeCard(
-            selected = true,
-            titleRes = R.string.dark_mode,
-            imageRes = R.drawable.img_dark_mode,
-            onClick = { },
-        )
-    }
-}
+//
+//@Preview
+//@Composable
+//private fun LightDarkThemeCardPreview() {
+//    KnightsTheme {
+//        LightDarkThemeCard(
+//            onChangeDarkTheme = { },
+//        )
+//    }
+//}
+//
+//@Preview
+//@Composable
+//private fun LightModeThemeCardPreview() {
+//    KnightsTheme {
+//        ThemeCard(
+//            selected = false,
+////            titleRes = R.string.light_mode,
+////            imageRes = R.drawable.img_light_mode,
+//            onClick = { },
+//        )
+//    }
+//}
+//
+//@Preview
+//@Composable
+//private fun DarkModeThemeCardPreview() {
+//    KnightsTheme {
+//        ThemeCard(
+//            selected = true,
+//            titleRes = R.string.dark_mode,
+//            imageRes = R.drawable.img_dark_mode,
+//            onClick = { },
+//        )
+//    }
+//}
