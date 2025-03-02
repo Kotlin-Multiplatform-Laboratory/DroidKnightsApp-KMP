@@ -19,7 +19,6 @@ kotlin {
             implementation(projects.core.navigation)
             implementation(projects.core.ui)
 
-            implementation(compose.components.resources)
             implementation(libs.kotlinx.immutable)
             implementation(libs.compose.navigation)
         }
