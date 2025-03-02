@@ -1,12 +1,10 @@
 package com.droidknights.app.feature.contributor.component
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.feature.contributor.model.ContributorsUiState
@@ -24,15 +22,15 @@ internal fun ContributorSection(
     )
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun ContributorCardPreview() {
-    KnightsTheme {
-        ContributorSection(
-            section = ContributorsUiState.Contributors.Item.Section(
-                title = "2024",
-            ),
-        )
-    }
-}
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Composable
+//private fun ContributorCardPreview() {
+//    KnightsTheme {
+//        ContributorSection(
+//            section = ContributorsUiState.Contributors.Item.Section(
+//                title = "2024",
+//            ),
+//        )
+//    }
+//}

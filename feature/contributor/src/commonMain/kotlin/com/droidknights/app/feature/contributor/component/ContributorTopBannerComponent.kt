@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -13,16 +12,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.Black
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.LocalDarkTheme
 import com.droidknights.app.core.designsystem.theme.Neon01
 import com.droidknights.app.core.designsystem.theme.Neon05
-import com.droidknights.app.feature.contributor.R
+import droidknights.feature.contributor.generated.resources.Res
+import droidknights.feature.contributor.generated.resources.bg_contributors_darkmode
+import droidknights.feature.contributor.generated.resources.bg_contributors_lightmode
+import droidknights.feature.contributor.generated.resources.contributor_banner_description
+import droidknights.feature.contributor.generated.resources.contributor_banner_title
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun ContributorTopBanner(
@@ -47,10 +49,10 @@ private fun ContributorBannerImage(
 ) {
     Image(
         painter = painterResource(
-            id = if (darkTheme) {
-                R.drawable.bg_contributors_darkmode
+            if (darkTheme) {
+                Res.drawable.bg_contributors_darkmode
             } else {
-                R.drawable.bg_contributors_lightmode
+                Res.drawable.bg_contributors_lightmode
             }
         ),
         contentDescription = null,
@@ -65,13 +67,13 @@ private fun ContributorBannerContent(
 ) {
     Column(modifier = modifier.padding(horizontal = 32.dp)) {
         Text(
-            text = stringResource(id = R.string.contributor_banner_title),
+            text = stringResource(Res.string.contributor_banner_title),
             style = KnightsTheme.typography.headlineSmallBL,
             color = MaterialTheme.colorScheme.onPrimaryContainer,
             modifier = Modifier.padding(top = 24.dp),
         )
         Text(
-            text = stringResource(id = R.string.contributor_banner_description),
+            text = stringResource(Res.string.contributor_banner_description),
             style = KnightsTheme.typography.titleSmallM140,
             color = Neon01,
             modifier = Modifier.padding(top = 6.dp, start = 3.dp),
@@ -79,16 +81,16 @@ private fun ContributorBannerContent(
     }
 }
 
-@Preview
-@Composable
-private fun ContributorTopBannerPreview() {
-    KnightsTheme {
-        Column {
-            ContributorTopBanner(darkTheme = false)
-
-            Spacer(modifier = Modifier.padding(top = 20.dp))
-
-            ContributorTopBanner(darkTheme = true)
-        }
-    }
-}
+//@Preview
+//@Composable
+//private fun ContributorTopBannerPreview() {
+//    KnightsTheme {
+//        Column {
+//            ContributorTopBanner(darkTheme = false)
+//
+//            Spacer(modifier = Modifier.padding(top = 20.dp))
+//
+//            ContributorTopBanner(darkTheme = true)
+//        }
+//    }
+//}

@@ -14,11 +14,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.core.designsystem.component.BottomLogo
 import com.droidknights.app.feature.contributor.component.ContributorCard
@@ -26,15 +22,15 @@ import com.droidknights.app.feature.contributor.component.ContributorSection
 import com.droidknights.app.feature.contributor.component.ContributorTopAppBar
 import com.droidknights.app.feature.contributor.component.ContributorTopBanner
 import com.droidknights.app.feature.contributor.model.ContributorsUiState
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ContributorRoute(
     onBackClick: () -> Unit,
     onShowErrorSnackBar: (throwable: Throwable?) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: ContributorViewModel = hiltViewModel(),
+    viewModel: ContributorViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -136,41 +132,41 @@ private fun ContributorList(
 
 private const val SHIMMERING_ITEM_COUNT = 4
 
-internal class ContributorPreviewParameterProvider : PreviewParameterProvider<ContributorsUiState> {
-    override val values = sequenceOf(
-        ContributorsUiState.Loading,
-        ContributorsUiState.Contributors(
-            contributors = persistentListOf(
-                ContributorsUiState.Contributors.Item.Section(
-                    title = "2023",
-                ),
-                ContributorsUiState.Contributors.Item.User(
-                    id = 0L,
-                    name = "Contributor1",
-                    imageUrl = "https://avatars.githubusercontent.com/u/25101514",
-                    githubUrl = "https://github.com/droidknights",
-                ),
-                ContributorsUiState.Contributors.Item.Section(
-                    title = "2024",
-                ),
-                ContributorsUiState.Contributors.Item.User(
-                    id = 1L,
-                    name = "Contributor2",
-                    imageUrl = "https://avatars.githubusercontent.com/u/25101514",
-                    githubUrl = "https://github.com/droidknights",
-                ),
-            )
-        )
-    )
-}
-
-@Preview
-@Composable
-private fun ContributorScreenPreview(
-    @PreviewParameter(ContributorPreviewParameterProvider::class) uiState: ContributorsUiState,
-) {
-    ContributorScreen(
-        uiState = uiState,
-        onBackClick = {},
-    )
-}
+//internal class ContributorPreviewParameterProvider : PreviewParameterProvider<ContributorsUiState> {
+//    override val values = sequenceOf(
+//        ContributorsUiState.Loading,
+//        ContributorsUiState.Contributors(
+//            contributors = persistentListOf(
+//                ContributorsUiState.Contributors.Item.Section(
+//                    title = "2023",
+//                ),
+//                ContributorsUiState.Contributors.Item.User(
+//                    id = 0L,
+//                    name = "Contributor1",
+//                    imageUrl = "https://avatars.githubusercontent.com/u/25101514",
+//                    githubUrl = "https://github.com/droidknights",
+//                ),
+//                ContributorsUiState.Contributors.Item.Section(
+//                    title = "2024",
+//                ),
+//                ContributorsUiState.Contributors.Item.User(
+//                    id = 1L,
+//                    name = "Contributor2",
+//                    imageUrl = "https://avatars.githubusercontent.com/u/25101514",
+//                    githubUrl = "https://github.com/droidknights",
+//                ),
+//            )
+//        )
+//    )
+//}
+//
+//@Preview
+//@Composable
+//private fun ContributorScreenPreview(
+//    @PreviewParameter(ContributorPreviewParameterProvider::class) uiState: ContributorsUiState,
+//) {
+//    ContributorScreen(
+//        uiState = uiState,
+//        onBackClick = {},
+//    )
+//}
