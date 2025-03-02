@@ -19,9 +19,3 @@ kotlin {
     }
 }
 
-compose.resources {
-    publicResClass = true
-    packageOfResClass = "com.droidknights.app.resources"
-    generateResClass = always
-}
-
