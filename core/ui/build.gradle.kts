@@ -11,18 +11,11 @@ android {
 
 kotlin {
     sourceSets {
-        androidMain.dependencies {
-            implementation(projects.core.model)
-            implementation(projects.core.designsystem)
-        }
         commonMain.dependencies {
             implementation(projects.core.model)
             implementation(projects.core.designsystem)
 
             implementation(compose.components.resources)
-        }
-        iosMain.dependencies {
-
         }
     }
 }

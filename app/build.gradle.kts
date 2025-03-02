@@ -34,8 +34,6 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
-            implementation(projects.feature.session)
-
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 

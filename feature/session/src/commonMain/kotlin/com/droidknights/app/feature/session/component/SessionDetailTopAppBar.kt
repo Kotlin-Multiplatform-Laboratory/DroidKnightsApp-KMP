@@ -7,8 +7,11 @@ import com.droidknights.app.core.designsystem.component.KnightsTopAppBar
 import com.droidknights.app.core.designsystem.component.TopAppBarNavigationType
 import com.droidknights.app.core.designsystem.theme.Gray
 import com.droidknights.app.core.designsystem.theme.Purple01
-import droidknights.feature.session.generated.resources.*
-import org.jetbrains.compose.resources.*
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.ic_session_bookmark
+import droidknights.feature.session.generated.resources.ic_session_bookmark_filled
+import droidknights.feature.session.generated.resources.session_detail_title
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 internal fun SessionDetailTopAppBar(

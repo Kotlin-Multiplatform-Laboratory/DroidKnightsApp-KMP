@@ -60,10 +60,7 @@ internal fun TrackChip(room: Room) {
 @Composable
 internal fun TimeChip(dateTime: LocalDateTime) {
     val pattern = stringResource(resource = Res.string.session_time_fmt)
-    val formatter = remember { LocalDateTime.Format {
-            byUnicodePattern(pattern)
-        }
-    }
+    val formatter = remember { LocalDateTime.Format { byUnicodePattern(pattern) } }
 
     TextChip(
         text = formatter.format(dateTime),
