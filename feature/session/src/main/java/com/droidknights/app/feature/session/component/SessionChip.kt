@@ -51,11 +51,11 @@ internal fun TagChip(tag: Tag) {
 
 @Composable
 internal fun TrackChip(room: Room) {
-    TextChip(
-        text = stringResource(id = room.textRes),
-        containerColor = MaterialTheme.colorScheme.secondaryContainer,
-        labelColor = MaterialTheme.colorScheme.onSecondaryContainer,
-    )
+//    TextChip(
+//        text = stringResource(resc = room.textRes),
+//        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+//        labelColor = MaterialTheme.colorScheme.onSecondaryContainer,
+//    )
 }
 
 @Composable

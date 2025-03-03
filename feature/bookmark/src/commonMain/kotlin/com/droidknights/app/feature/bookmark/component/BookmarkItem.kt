@@ -6,7 +6,6 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,16 +19,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.model.Room
-import com.droidknights.app.feature.bookmark.R
-import java.time.LocalTime
+import droidknights.feature.bookmark.generated.resources.Res
+import droidknights.feature.bookmark.generated.resources.drag_and_drop
+import droidknights.feature.bookmark.generated.resources.ic_menu
+import kotlinx.datetime.LocalTime
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * @param leadingContent 시작지점인 왼쪽에 표현될 컨텐츠
@@ -128,7 +126,7 @@ private fun BookMarkItemForPreview(isEditMode: Boolean) {
                 BookmarkTimelineItem(
                     modifier = Modifier.padding(horizontal = 8.dp),
                     sequence = 2,
-                    time = LocalTime.of(1, 20)
+                    time = LocalTime(1, 20)
                 )
             }
         },
@@ -146,20 +144,20 @@ private fun BookMarkItemForPreview(isEditMode: Boolean) {
                 modifier = Modifier
                     .padding(horizontal = 18.dp)
                     .size(24.dp),
-                imageVector = ImageVector.vectorResource(id = R.drawable.ic_menu),
-                contentDescription = stringResource(id = R.string.drag_and_drop)
+                painter = painterResource(Res.drawable.ic_menu),
+                contentDescription = stringResource(Res.string.drag_and_drop)
             )
         }
     )
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFF9F9F9)
-@Composable
-private fun BookmarkItemPreview() {
-    KnightsTheme {
-        Column {
-            BookMarkItemForPreview(isEditMode = true)
-            BookMarkItemForPreview(isEditMode = false)
-        }
-    }
-}
+//@Preview(showBackground = true, backgroundColor = 0xFFF9F9F9)
+//@Composable
+//private fun BookmarkItemPreview() {
+//    KnightsTheme {
+//        Column {
+//            BookMarkItemForPreview(isEditMode = true)
+//            BookMarkItemForPreview(isEditMode = false)
+//        }
+//    }
+//}

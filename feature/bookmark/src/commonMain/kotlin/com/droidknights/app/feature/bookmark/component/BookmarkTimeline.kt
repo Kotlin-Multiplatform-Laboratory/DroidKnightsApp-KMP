@@ -14,16 +14,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.Purple01
 import com.droidknights.app.core.designsystem.theme.White
-import com.droidknights.app.feature.bookmark.R
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
+import droidknights.feature.bookmark.generated.resources.Res
+import droidknights.feature.bookmark.generated.resources.session_time_format
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.format.FormatStringsInDatetimeFormats
+import kotlinx.datetime.format.byUnicodePattern
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun BookmarkTimelineItem(
@@ -61,13 +62,14 @@ private fun SequenceBadge(
     }
 }
 
+@OptIn(FormatStringsInDatetimeFormats::class)
 @Composable
 private fun SessionTimeBadge(
     modifier: Modifier = Modifier,
     time: LocalTime,
 ) {
-    val pattern = stringResource(id = R.string.session_time_format)
-    val formatter = remember { DateTimeFormatter.ofPattern(pattern) }
+    val pattern = stringResource(Res.string.session_time_format)
+    val formatter = remember { LocalTime.Format { byUnicodePattern(pattern) } }
 
     Box(
         modifier = modifier
@@ -84,15 +86,15 @@ private fun SessionTimeBadge(
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFF9F9F9)
-@Composable
-private fun BookmarkTimelineItemPreview() {
-    KnightsTheme {
-        Box {
-            BookmarkTimelineItem(
-                sequence = 1,
-                time = LocalTime.of(23, 40)
-            )
-        }
-    }
-}
+//@Preview(showBackground = true, backgroundColor = 0xFFF9F9F9)
+//@Composable
+//private fun BookmarkTimelineItemPreview() {
+//    KnightsTheme {
+//        Box {
+//            BookmarkTimelineItem(
+//                sequence = 1,
+//                time = LocalTime(23, 40)
+//            )
+//        }
+//    }
+//}
