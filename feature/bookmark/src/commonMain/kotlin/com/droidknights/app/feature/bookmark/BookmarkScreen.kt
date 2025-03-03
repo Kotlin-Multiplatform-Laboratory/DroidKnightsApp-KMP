@@ -1,6 +1,5 @@
 package com.droidknights.app.feature.bookmark
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -23,7 +22,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -102,6 +103,7 @@ private fun BookmarkLoading() {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun BookmarkScreen(
     isEditMode: Boolean,
@@ -112,9 +114,7 @@ private fun BookmarkScreen(
     onDeletedSessions: () -> Unit,
     listContentBottomPadding: Dp = 72.dp,
 ) {
-    BackHandler(isEditMode) {
-        toggleEditMode()
-    }
+    BackHandler(enabled = isEditMode, onBack = toggleEditMode)
 
     Box(
         contentAlignment = Alignment.BottomCenter

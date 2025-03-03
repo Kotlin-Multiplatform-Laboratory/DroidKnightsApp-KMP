@@ -38,6 +38,7 @@ androidxComposeBom = "2025.02.00"
 androidxComposeNavigation = "2.8.8"
 # https://developer.android.com/jetpack/androidx/releases/compose-material3
 androidxComposeMaterial3 = "1.3.1"
+uiBackhandler = "1.8.0-alpha03"
 
 # https://github.com/skydoves/landscapist
 landscapist = "2.4.6"
@@ -154,6 +155,7 @@ compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navi
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
 compose-compiler-gradle-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 compose-gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composePlugin" }
+compose-ui-backhandler = { group = "org.jetbrains.compose.ui", name = "ui-backhandler", version.ref = "uiBackhandler" }
 ksp-gradle-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
