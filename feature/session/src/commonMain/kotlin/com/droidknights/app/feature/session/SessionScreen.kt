@@ -21,11 +21,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.model.Room
@@ -36,15 +34,19 @@ import com.droidknights.app.feature.session.component.SessionTopAppBar
 import com.droidknights.app.feature.session.model.SessionState
 import com.droidknights.app.feature.session.model.SessionUiState
 import com.droidknights.app.feature.session.model.rememberSessionState
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.*
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.flow.collectLatest
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun SessionScreen(
     onBackClick: () -> Unit,
     onSessionClick: (Session) -> Unit,
     onShowErrorSnackBar: (throwable: Throwable?) -> Unit,
-    sessionViewModel: SessionViewModel = hiltViewModel(),
+    sessionViewModel: SessionViewModel = koinViewModel(),
 ) {
     val sessionUiState by sessionViewModel.uiState.collectAsStateWithLifecycle()
     val sessionState = (sessionUiState as? SessionUiState.Sessions)?.sessions?.let { sessions ->
@@ -131,7 +133,7 @@ private val SessionGroupSpace = 100.dp
 private fun DroidKnightsFooter() {
     Text(
         modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(top = 56.dp, bottom = 80.dp),
-        text = stringResource(id = R.string.footer_text),
+        text = stringResource(resource = Res.string.footer_text),
         style = KnightsTheme.typography.labelMediumR,
         color = Color.LightGray,
         textAlign = TextAlign.Center

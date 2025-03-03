@@ -18,11 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.IconTextChip
 import com.droidknights.app.core.designsystem.component.KnightsCard
@@ -33,12 +28,16 @@ import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.LightGray
 import com.droidknights.app.core.designsystem.theme.Purple01
 import com.droidknights.app.core.designsystem.theme.Purple01A30
-import com.droidknights.app.core.model.Room
 import com.droidknights.app.core.model.Session
 import com.droidknights.app.core.model.Speaker
-import com.droidknights.app.core.model.Tag
-import com.droidknights.app.feature.session.R
-import kotlinx.datetime.LocalDateTime
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.bookmark
+import droidknights.feature.session.generated.resources.ic_flagbookmark
+import droidknights.feature.session.generated.resources.ic_session_bookmark_filled
+import droidknights.feature.session.generated.resources.placeholder_speaker
+import droidknights.feature.session.generated.resources.session_category
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun SessionCard(
@@ -139,10 +138,10 @@ private fun SessionTrackInfo(
         if (session.isBookmarked) {
             Spacer(modifier = Modifier.width(8.dp))
             IconTextChip(
-                text = stringResource(id = R.string.bookmark),
+                text = stringResource(resource = Res.string.bookmark),
                 containerColor = Purple01A30,
                 labelColor = Purple01,
-                iconPainter = painterResource(id = R.drawable.ic_session_bookmark_filled),
+                iconPainter = painterResource(resource = Res.drawable.ic_session_bookmark_filled),
                 iconTint = Purple01
             )
         }
@@ -171,7 +170,7 @@ private fun SessionSpeakers(
                     modifier = Modifier
                         .size(80.dp)
                         .clip(CircleShape),
-                    placeholder = painterResource(id = com.droidknights.app.core.ui.R.drawable.placeholder_speaker),
+                    placeholder = painterResource(resource = Res.drawable.placeholder_speaker),
                 )
             }
         }
@@ -181,7 +180,7 @@ private fun SessionSpeakers(
 @Composable
 private fun CategoryChip() {
     TextChip(
-        text = stringResource(id = R.string.session_category),
+        text = stringResource(resource = Res.string.session_category),
         containerColor = DarkGray,
         labelColor = LightGray,
     )
@@ -192,7 +191,7 @@ private fun BookmarkImage(
     modifier: Modifier = Modifier,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.ic_flagbookmark),
+        painter = painterResource(resource = Res.drawable.ic_flagbookmark),
         contentDescription = null,
         modifier = modifier
             .size(
@@ -205,86 +204,86 @@ private fun BookmarkImage(
 private val CardContentPadding =
     PaddingValues(start = 24.dp, top = 16.dp, end = 24.dp, bottom = 24.dp)
 
-internal class SessionPreviewParameterProvider : PreviewParameterProvider<Session> {
-    override val values = sequenceOf(
-        Session( // single speaker with out bookmark
-            id = "1",
-            title = "Jetpack Compose에 있는 것, 없는 것",
-            content = "",
-            speakers = listOf(
-                Speaker(
-                    name = "안성용",
-                    introduction = "안드로이드 개발자",
-                    imageUrl = "https://picsum.photos/200",
-                ),
-            ),
-            tags = listOf(
-                Tag("효율적인 코드베이스")
-            ),
-            startTime = LocalDateTime(2023, 9, 12, 16, 10, 0),
-            endTime = LocalDateTime(2023, 9, 12, 16, 45, 0),
-            room = Room.TRACK1,
-            isBookmarked = false,
-        ),
-        Session( // single speaker with bookmark
-            id = "1",
-            title = "Jetpack Compose에 있는 것, 없는 것",
-            content = "",
-            speakers = listOf(
-                Speaker(
-                    name = "안성용",
-                    introduction = "안드로이드 개발자",
-                    imageUrl = "https://picsum.photos/200",
-                ),
-            ),
-            tags = listOf(
-                Tag("효율적인 코드베이스")
-            ),
-            startTime = LocalDateTime(2023, 9, 12, 16, 10, 0),
-            endTime = LocalDateTime(2023, 9, 12, 16, 45, 0),
-            room = Room.TRACK1,
-            isBookmarked = true,
-        ),
-        Session( // multi speakers
-            id = "1",
-            title = "Jetpack Compose에 있는 것, 없는 것",
-            content = "",
-            speakers = listOf(
-                Speaker(
-                    name = "안성용",
-                    introduction = "안드로이드 개발자",
-                    imageUrl = "https://picsum.photos/200",
-                ),
-                Speaker(
-                    name = "안성용",
-                    introduction = "안드로이드 개발자",
-                    imageUrl = "https://picsum.photos/200",
-                ),
-                Speaker(
-                    name = "안성용",
-                    introduction = "안드로이드 개발자",
-                    imageUrl = "https://picsum.photos/200",
-                ),
-            ),
-            tags = listOf(
-                Tag("효율적인 코드베이스"),
-                Tag("효율적인 코드베이스"),
-                Tag("효율적인 코드베이스")
-            ),
-            startTime = LocalDateTime(2023, 9, 12, 16, 10, 0),
-            endTime = LocalDateTime(2023, 9, 12, 16, 45, 0),
-            room = Room.TRACK1,
-            isBookmarked = false,
-        ),
-    )
-}
-
-@Preview
-@Composable
-private fun SessionCardPreview(
-    @PreviewParameter(SessionPreviewParameterProvider::class) session: Session,
-) {
-    KnightsTheme {
-        SessionCard(session)
-    }
-}
+//internal class SessionPreviewParameterProvider : PreviewParameterProvider<Session> {
+//    override val values = sequenceOf(
+//        Session( // single speaker with out bookmark
+//            id = "1",
+//            title = "Jetpack Compose에 있는 것, 없는 것",
+//            content = "",
+//            speakers = listOf(
+//                Speaker(
+//                    name = "안성용",
+//                    introduction = "안드로이드 개발자",
+//                    imageUrl = "https://picsum.photos/200",
+//                ),
+//            ),
+//            tags = listOf(
+//                Tag("효율적인 코드베이스")
+//            ),
+//            startTime = LocalDateTime(2023, 9, 12, 16, 10, 0),
+//            endTime = LocalDateTime(2023, 9, 12, 16, 45, 0),
+//            room = Room.TRACK1,
+//            isBookmarked = false,
+//        ),
+//        Session( // single speaker with bookmark
+//            id = "1",
+//            title = "Jetpack Compose에 있는 것, 없는 것",
+//            content = "",
+//            speakers = listOf(
+//                Speaker(
+//                    name = "안성용",
+//                    introduction = "안드로이드 개발자",
+//                    imageUrl = "https://picsum.photos/200",
+//                ),
+//            ),
+//            tags = listOf(
+//                Tag("효율적인 코드베이스")
+//            ),
+//            startTime = LocalDateTime(2023, 9, 12, 16, 10, 0),
+//            endTime = LocalDateTime(2023, 9, 12, 16, 45, 0),
+//            room = Room.TRACK1,
+//            isBookmarked = true,
+//        ),
+//        Session( // multi speakers
+//            id = "1",
+//            title = "Jetpack Compose에 있는 것, 없는 것",
+//            content = "",
+//            speakers = listOf(
+//                Speaker(
+//                    name = "안성용",
+//                    introduction = "안드로이드 개발자",
+//                    imageUrl = "https://picsum.photos/200",
+//                ),
+//                Speaker(
+//                    name = "안성용",
+//                    introduction = "안드로이드 개발자",
+//                    imageUrl = "https://picsum.photos/200",
+//                ),
+//                Speaker(
+//                    name = "안성용",
+//                    introduction = "안드로이드 개발자",
+//                    imageUrl = "https://picsum.photos/200",
+//                ),
+//            ),
+//            tags = listOf(
+//                Tag("효율적인 코드베이스"),
+//                Tag("효율적인 코드베이스"),
+//                Tag("효율적인 코드베이스")
+//            ),
+//            startTime = LocalDateTime(2023, 9, 12, 16, 10, 0),
+//            endTime = LocalDateTime(2023, 9, 12, 16, 45, 0),
+//            room = Room.TRACK1,
+//            isBookmarked = false,
+//        ),
+//    )
+//}
+//
+//@Preview
+//@Composable
+//private fun SessionCardPreview(
+//    @PreviewParameter(SessionPreviewParameterProvider::class) session: Session,
+//) {
+//    KnightsTheme {
+//        SessionCard(session)
+//    }
+//}

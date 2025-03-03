@@ -1,6 +1,5 @@
 package com.droidknights.app.feature.session.component
 
-import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
@@ -12,11 +11,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +31,6 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextLayoutResult
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -43,10 +39,10 @@ import com.droidknights.app.core.designsystem.component.TopAppBarNavigationType
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.model.Room
 import com.droidknights.app.core.ui.RoomText
-import com.droidknights.app.feature.session.R
 import com.droidknights.app.feature.session.model.SessionState
+import droidknights.feature.session.generated.resources.Res
+import droidknights.feature.session.generated.resources.session_title
 import kotlinx.collections.immutable.PersistentList
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.launch
 
@@ -86,7 +82,7 @@ internal fun SessionTopAppBar(
             exit = exit,
         ) {
             KnightsTopAppBar(
-                titleRes = R.string.session_title,
+                titleRes = Res.string.session_title,
                 navigationType = TopAppBarNavigationType.Close,
                 navigationIconContentDescription = null,
                 modifier = Modifier.statusBarsPadding(),
@@ -188,31 +184,31 @@ private fun Modifier.tabIndicatorOffset(
         .width(currentTabWidth)
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun SessionTopAppBarPreview() {
-    KnightsTheme {
-        SessionTopAppBar(
-            sessionState = SessionState(
-                sessions = persistentListOf(),
-                listState = rememberLazyListState()
-            ),
-            onBackClick = { }
-        )
-    }
-}
-
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun SessionTabIndicatorPreview() {
-    KnightsTheme {
-        SessionTabRow(
-            selectedRoom = Room.TRACK2,
-            rooms = Room.entries.toPersistentList(),
-            onRoomSelect = { },
-            modifier = Modifier.size(320.dp, 48.dp),
-        )
-    }
-}
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+//@Composable
+//private fun SessionTopAppBarPreview() {
+//    KnightsTheme {
+//        SessionTopAppBar(
+//            sessionState = SessionState(
+//                sessions = persistentListOf(),
+//                listState = rememberLazyListState()
+//            ),
+//            onBackClick = { }
+//        )
+//    }
+//}
+//
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+//@Composable
+//private fun SessionTabIndicatorPreview() {
+//    KnightsTheme {
+//        SessionTabRow(
+//            selectedRoom = Room.TRACK2,
+//            rooms = Room.entries.toPersistentList(),
+//            onRoomSelect = { },
+//            modifier = Modifier.size(320.dp, 48.dp),
+//        )
+//    }
+//}
