@@ -1,6 +1,5 @@
 package com.droidknights.app.feature.setting.component
 
-import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,31 +12,33 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.KnightsCard
 import com.droidknights.app.core.designsystem.theme.Graphite
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
-import com.droidknights.app.feature.setting.R
-import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import com.droidknights.app.feature.setting.navigation.navigateToOssLicense
+import droidknights.feature.setting.generated.resources.Res
+import droidknights.feature.setting.generated.resources.icon_arrow_right_yellow01
+import droidknights.feature.setting.generated.resources.oss_license_title
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun OpenSourceCard(
     modifier: Modifier = Modifier,
 ) {
-    val titleText = stringResource(id = R.string.oss_license_title)
-    val arrowPainter = painterResource(id = R.drawable.icon_arrow_right_yellow01)
-    val context = LocalContext.current
+    val titleText = stringResource(Res.string.oss_license_title)
+    val arrowPainter = painterResource(resource = Res.drawable.icon_arrow_right_yellow01)
 
     CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onPrimaryContainer) {
         KnightsCard(
             modifier = modifier,
             color = Graphite,
             onClick = {
-                context.startActivity(Intent(context, OssLicensesMenuActivity::class.java))
+                navigateToOssLicense()
             }
         ) {
             Column {

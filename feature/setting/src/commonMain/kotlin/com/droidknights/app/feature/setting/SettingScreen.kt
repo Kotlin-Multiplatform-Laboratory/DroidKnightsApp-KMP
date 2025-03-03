@@ -8,11 +8,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.feature.setting.component.LightDarkThemeCard
 import com.droidknights.app.feature.setting.component.OpenSourceCard
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 internal fun SettingScreen(
