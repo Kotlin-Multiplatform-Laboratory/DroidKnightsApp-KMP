@@ -1,6 +1,5 @@
 package com.droidknights.app.feature.contributor.component
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,23 +13,27 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.KnightsCard
 import com.droidknights.app.core.designsystem.component.NetworkImage
 import com.droidknights.app.core.designsystem.component.TextChip
-import com.droidknights.app.core.designsystem.res.rememberPainterResource
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
-import com.droidknights.app.feature.contributor.R
+import com.droidknights.app.core.designsystem.theme.LocalDarkTheme
 import com.droidknights.app.feature.contributor.model.ContributorsUiState
 import com.valentinilk.shimmer.shimmer
+import droidknights.feature.contributor.generated.resources.Res
+import droidknights.feature.contributor.generated.resources.contributor_chip
+import droidknights.feature.contributor.generated.resources.ic_contributor_placeholder_darkmode
+import droidknights.feature.contributor.generated.resources.ic_contributor_placeholder_lightmode
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun ContributorCard(
     contributor: ContributorsUiState.Contributors.Item.User,
-    modifier: Modifier = Modifier,
     showPlaceholder: Boolean,
+    modifier: Modifier = Modifier,
+    darkTheme: Boolean = LocalDarkTheme.current
 ) {
     val uriHandler = LocalUriHandler.current
     val shimmerModifier = if (showPlaceholder) {
@@ -41,11 +44,6 @@ internal fun ContributorCard(
     } else {
         Modifier
     }
-
-    val placeholder = rememberPainterResource(
-        lightId = R.drawable.ic_contributor_placeholder_lightmode,
-        darkId = R.drawable.ic_contributor_placeholder_darkmode,
-    )
 
     KnightsCard(
         enabled = contributor.githubUrl.isNotEmpty(),
@@ -64,7 +62,7 @@ internal fun ContributorCard(
                     )
             ) {
                 TextChip(
-                    stringResource(id = R.string.contributor_chip),
+                    stringResource(Res.string.contributor_chip),
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                     labelColor = MaterialTheme.colorScheme.onTertiaryContainer,
                     modifier = shimmerModifier
@@ -81,7 +79,7 @@ internal fun ContributorCard(
 
             NetworkImage(
                 imageUrl = contributor.imageUrl,
-                placeholder = placeholder,
+                placeholder = painterResource(if (darkTheme) Res.drawable.ic_contributor_placeholder_lightmode else Res.drawable.ic_contributor_placeholder_darkmode),
                 modifier = Modifier
                     .padding(16.dp)
                     .size(100.dp)
@@ -92,28 +90,28 @@ internal fun ContributorCard(
     }
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun ContributorCardPreview() {
-    KnightsTheme {
-        ContributorCard(
-            contributor = ContributorsUiState.Contributors.Item.User(
-                id = 0L,
-                name = "Contributor1",
-                imageUrl = "https://avatars.githubusercontent.com/u/25101514",
-                githubUrl = "https://github.com/droidknights",
-            ),
-            showPlaceholder = true,
-        )
-        ContributorCard(
-            contributor = ContributorsUiState.Contributors.Item.User(
-                id = 0L,
-                name = "Contributor1",
-                imageUrl = "https://avatars.githubusercontent.com/u/25101514",
-                githubUrl = "https://github.com/droidknights",
-            ),
-            showPlaceholder = false,
-        )
-    }
-}
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Composable
+//private fun ContributorCardPreview() {
+//    KnightsTheme {
+//        ContributorCard(
+//            contributor = ContributorsUiState.Contributors.Item.User(
+//                id = 0L,
+//                name = "Contributor1",
+//                imageUrl = "https://avatars.githubusercontent.com/u/25101514",
+//                githubUrl = "https://github.com/droidknights",
+//            ),
+//            showPlaceholder = true,
+//        )
+//        ContributorCard(
+//            contributor = ContributorsUiState.Contributors.Item.User(
+//                id = 0L,
+//                name = "Contributor1",
+//                imageUrl = "https://avatars.githubusercontent.com/u/25101514",
+//                githubUrl = "https://github.com/droidknights",
+//            ),
+//            showPlaceholder = false,
+//        )
+//    }
+//}

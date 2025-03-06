@@ -7,14 +7,12 @@ import kotlinx.collections.immutable.toPersistentList
 internal fun List<ContributorGroup>.toContributorsUiState(): ContributorsUiState =
     ContributorsUiState.Contributors(
         contributors = flatMap { (year, contributors) ->
-            sequenceOf(
-                ContributorsUiState.Contributors.Item.Section(title = year.toString())
-            ) + contributors.map { item ->
+            listOf(ContributorsUiState.Contributors.Item.Section(title = year.toString())) + contributors.map { contributor ->
                 ContributorsUiState.Contributors.Item.User(
-                    id = item.id,
-                    imageUrl = item.imageUrl,
-                    githubUrl = item.githubUrl,
-                    name = item.name
+                    id = contributor.id,
+                    imageUrl = contributor.imageUrl,
+                    githubUrl = contributor.githubUrl,
+                    name = contributor.name
                 )
             }
         }.toPersistentList(),
