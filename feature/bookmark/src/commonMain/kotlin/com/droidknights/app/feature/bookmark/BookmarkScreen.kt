@@ -42,9 +42,6 @@ import droidknights.feature.bookmark.generated.resources.Res
 import droidknights.feature.bookmark.generated.resources.drag_and_drop
 import droidknights.feature.bookmark.generated.resources.empty_bookmark_item_description
 import droidknights.feature.bookmark.generated.resources.ic_menu
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.collectLatest
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -87,7 +84,7 @@ private fun BookmarkContent(
         BookmarkUiState.Loading -> BookmarkLoading()
         is BookmarkUiState.Success -> BookmarkScreen(
             isEditMode = uiState.isEditMode,
-            bookmarkItems = uiState.bookmarks.toImmutableList(),
+            bookmarkItems = uiState.bookmarks,
             toggleEditMode = toggleEditMode,
             selectedSessionIds = uiState.selectedSessionIds,
             onSelectedItem = onSelectedItem,
@@ -107,9 +104,9 @@ private fun BookmarkLoading() {
 @Composable
 private fun BookmarkScreen(
     isEditMode: Boolean,
-    bookmarkItems: ImmutableList<BookmarkItemUiState>,
+    bookmarkItems: List<BookmarkItemUiState>,
     toggleEditMode: () -> Unit,
-    selectedSessionIds: ImmutableSet<String>,
+    selectedSessionIds: Set<String>,
     onSelectedItem: (Session) -> Unit,
     onDeletedSessions: () -> Unit,
     listContentBottomPadding: Dp = 72.dp,
@@ -161,8 +158,8 @@ private fun BookmarkScreen(
 @Composable
 private fun BookmarkList(
     listContentBottomPadding: Dp,
-    bookmarkItems: ImmutableList<BookmarkItemUiState>,
-    selectedSessionIds: ImmutableSet<String>,
+    bookmarkItems: List<BookmarkItemUiState>,
+    selectedSessionIds: Set<String>,
     isEditMode: Boolean,
     onSelectedItem: (Session) -> Unit
 ) {

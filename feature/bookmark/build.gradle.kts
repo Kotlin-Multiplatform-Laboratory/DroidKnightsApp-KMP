@@ -20,7 +20,6 @@ kotlin {
             implementation(projects.core.navigation)
             implementation(projects.core.ui)
 
-            implementation(libs.kotlinx.immutable)
             implementation(libs.compose.ui.backhandler)
         }
     }

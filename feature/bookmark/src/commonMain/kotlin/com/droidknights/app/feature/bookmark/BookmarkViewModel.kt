@@ -7,9 +7,6 @@ import com.droidknights.app.core.domain.usecase.GetBookmarkedSessionsUseCase
 import com.droidknights.app.core.model.Session
 import com.droidknights.app.feature.bookmark.model.BookmarkItemUiState
 import com.droidknights.app.feature.bookmark.model.BookmarkUiState
-import kotlinx.collections.immutable.persistentSetOf
-import kotlinx.collections.immutable.toPersistentList
-import kotlinx.collections.immutable.toPersistentSet
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -52,7 +49,6 @@ class BookmarkViewModel(
                                         session = session,
                                     )
                                 }
-                                .toPersistentList()
                         )
                     }
 
@@ -65,7 +61,6 @@ class BookmarkViewModel(
                                         session = session,
                                     )
                                 }
-                                .toPersistentList()
                         )
                     }
                 }
@@ -84,7 +79,7 @@ class BookmarkViewModel(
         _bookmarkUiState.value = state.copy(
             isEditMode = state.isEditMode.not(),
             bookmarks = state.bookmarks,
-            selectedSessionIds = persistentSetOf()
+            selectedSessionIds = setOf()
         )
     }
 
@@ -102,7 +97,7 @@ class BookmarkViewModel(
         }
 
         _bookmarkUiState.value = state.copy(
-            selectedSessionIds = newSelectedIds.toPersistentSet()
+            selectedSessionIds = newSelectedIds
         )
     }
 
@@ -116,7 +111,7 @@ class BookmarkViewModel(
             emit(deleteBookmarkedSessionUseCase(state.selectedSessionIds))
         }.onEach {
             _bookmarkUiState.update {
-                state.copy(selectedSessionIds = persistentSetOf())
+                state.copy(selectedSessionIds = setOf())
             }
         }.catch { throwable ->
             _errorFlow.emit(throwable)

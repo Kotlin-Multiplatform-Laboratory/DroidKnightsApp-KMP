@@ -21,15 +21,13 @@ import com.droidknights.app.core.model.Session
 import com.droidknights.app.feature.bookmark.model.BookmarkItemUiState
 import droidknights.feature.bookmark.generated.resources.Res
 import droidknights.feature.bookmark.generated.resources.ic_check
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.persistentSetOf
 import kotlinx.datetime.LocalDateTime
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
 internal fun EditModeLeadingItem(
     itemState: BookmarkItemUiState,
-    selectedSessionIds: ImmutableSet<String>,
+    selectedSessionIds: Set<String>,
     onSelectedItem: (Session) -> Unit,
 ) {
     val isSelectedItem = selectedSessionIds.contains(itemState.session.id)
@@ -77,8 +75,8 @@ private val SampleBookmarkItemUiState = BookmarkItemUiState(
     ),
 )
 
-private val SampleSelectedSessionIds = persistentSetOf("1", "2", "3")
-private val SampleUnselectedSessionIds = persistentSetOf("-1")
+//private val SampleSelectedSessionIds = setOf("1", "2", "3")
+//private val SampleUnselectedSessionIds = setOf("-1")
 
 //@Preview
 //@Composable
