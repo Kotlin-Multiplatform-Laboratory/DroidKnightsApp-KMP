@@ -1,6 +1,5 @@
 package com.droidknights.app.feature.bookmark
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -23,13 +22,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.model.Session
@@ -41,15 +38,19 @@ import com.droidknights.app.feature.bookmark.component.EditModeLeadingItem
 import com.droidknights.app.feature.bookmark.component.RemoveBookmarkSnackBar
 import com.droidknights.app.feature.bookmark.model.BookmarkItemUiState
 import com.droidknights.app.feature.bookmark.model.BookmarkUiState
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.ImmutableSet
-import kotlinx.collections.immutable.toImmutableList
+import droidknights.feature.bookmark.generated.resources.Res
+import droidknights.feature.bookmark.generated.resources.drag_and_drop
+import droidknights.feature.bookmark.generated.resources.empty_bookmark_item_description
+import droidknights.feature.bookmark.generated.resources.ic_menu
 import kotlinx.coroutines.flow.collectLatest
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun BookmarkRoute(
     onShowErrorSnackBar: (throwable: Throwable?) -> Unit,
-    viewModel: BookmarkViewModel = hiltViewModel(),
+    viewModel: BookmarkViewModel = koinViewModel(),
 ) {
     val bookmarkUiState by viewModel.bookmarkUiState.collectAsStateWithLifecycle()
 
@@ -83,7 +84,7 @@ private fun BookmarkContent(
         BookmarkUiState.Loading -> BookmarkLoading()
         is BookmarkUiState.Success -> BookmarkScreen(
             isEditMode = uiState.isEditMode,
-            bookmarkItems = uiState.bookmarks.toImmutableList(),
+            bookmarkItems = uiState.bookmarks,
             toggleEditMode = toggleEditMode,
             selectedSessionIds = uiState.selectedSessionIds,
             onSelectedItem = onSelectedItem,
@@ -99,19 +100,18 @@ private fun BookmarkLoading() {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun BookmarkScreen(
     isEditMode: Boolean,
-    bookmarkItems: ImmutableList<BookmarkItemUiState>,
+    bookmarkItems: List<BookmarkItemUiState>,
     toggleEditMode: () -> Unit,
-    selectedSessionIds: ImmutableSet<String>,
+    selectedSessionIds: Set<String>,
     onSelectedItem: (Session) -> Unit,
     onDeletedSessions: () -> Unit,
     listContentBottomPadding: Dp = 72.dp,
 ) {
-    BackHandler(isEditMode) {
-        toggleEditMode()
-    }
+    BackHandler(enabled = isEditMode, onBack = toggleEditMode)
 
     Box(
         contentAlignment = Alignment.BottomCenter
@@ -158,8 +158,8 @@ private fun BookmarkScreen(
 @Composable
 private fun BookmarkList(
     listContentBottomPadding: Dp,
-    bookmarkItems: ImmutableList<BookmarkItemUiState>,
-    selectedSessionIds: ImmutableSet<String>,
+    bookmarkItems: List<BookmarkItemUiState>,
+    selectedSessionIds: Set<String>,
     isEditMode: Boolean,
     onSelectedItem: (Session) -> Unit
 ) {
@@ -213,8 +213,8 @@ private fun BookmarkList(
                         modifier = Modifier
                             .padding(horizontal = 18.dp)
                             .size(24.dp),
-                        imageVector = ImageVector.vectorResource(id = R.drawable.ic_menu),
-                        contentDescription = stringResource(id = R.string.drag_and_drop),
+                        painter = painterResource(Res.drawable.ic_menu),
+                        contentDescription = stringResource(Res.string.drag_and_drop),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
@@ -228,7 +228,7 @@ private fun BookmarkEmptyScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = stringResource(id = R.string.empty_bookmark_item_description),
+            text = stringResource(Res.string.empty_bookmark_item_description),
             style = KnightsTheme.typography.titleSmallM,
             color = MaterialTheme.colorScheme.onSurface
         )

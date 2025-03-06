@@ -15,15 +15,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.Graphite
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.Purple01
-import com.droidknights.app.feature.bookmark.R
+import droidknights.feature.bookmark.generated.resources.Res
+import droidknights.feature.bookmark.generated.resources.ic_trash
+import droidknights.feature.bookmark.generated.resources.remove_from_bookmark
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun RemoveBookmarkSnackBar(
@@ -42,20 +42,20 @@ internal fun RemoveBookmarkSnackBar(
     ) {
         Icon(
             modifier = Modifier.padding(end = 8.dp).size(24.dp),
-            imageVector = ImageVector.vectorResource(id = R.drawable.ic_trash),
+            painter = painterResource(Res.drawable.ic_trash),
             contentDescription = null,
             tint = Purple01
         )
         Text(
-            text = stringResource(id = R.string.remove_from_bookmark),
+            text = stringResource(Res.string.remove_from_bookmark),
             style = KnightsTheme.typography.bodyMediumR,
             color = Purple01
         )
     }
 }
 
-@Preview(backgroundColor = 0xFFFFFF)
-@Composable
-private fun BookmarkStatePopupPreview() {
-    RemoveBookmarkSnackBar(onClick = {})
-}
+//@Preview(backgroundColor = 0xFFFFFF)
+//@Composable
+//private fun BookmarkStatePopupPreview() {
+//    RemoveBookmarkSnackBar(onClick = {})
+//}

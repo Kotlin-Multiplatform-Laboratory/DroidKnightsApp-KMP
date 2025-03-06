@@ -15,9 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.Purple01
@@ -79,28 +76,28 @@ internal fun BookmarkCard(
     }
 }
 
-internal class RoomPreviewParameterProvider : PreviewParameterProvider<Room> {
-    override val values = sequenceOf(
-        Room.TRACK1,
-        Room.TRACK2,
-        Room.TRACK3,
-        Room.ETC
-    )
-}
+//internal class RoomPreviewParameterProvider : PreviewParameterProvider<Room> {
+//    override val values = sequenceOf(
+//        Room.TRACK1,
+//        Room.TRACK2,
+//        Room.TRACK3,
+//        Room.ETC
+//    )
+//}
 
-@Preview
-@Composable
-private fun BookmarkCardPreview(
-    @PreviewParameter(RoomPreviewParameterProvider::class) room: Room,
-) {
-    KnightsTheme {
-        Box {
-            BookmarkCard(
-                tagLabel = "효율적인 코드 베이스",
-                room = room,
-                title = "Jetpack Compose에 있는 것, 없는것",
-                speaker = "홍길동"
-            )
-        }
-    }
-}
+//@Preview
+//@Composable
+//private fun BookmarkCardPreview(
+//    @PreviewParameter(RoomPreviewParameterProvider::class) room: Room,
+//) {
+//    KnightsTheme {
+//        Box {
+//            BookmarkCard(
+//                tagLabel = "효율적인 코드 베이스",
+//                room = room,
+//                title = "Jetpack Compose에 있는 것, 없는것",
+//                speaker = "홍길동"
+//            )
+//        }
+//    }
+//}

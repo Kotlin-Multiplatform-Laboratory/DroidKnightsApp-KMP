@@ -1,9 +1,8 @@
 package com.droidknights.app.feature.bookmark.model
 
+import androidx.compose.runtime.Immutable
 import com.droidknights.app.core.model.Session
-import java.time.LocalTime
-import javax.annotation.concurrent.Immutable
-import kotlinx.datetime.toJavaLocalDateTime
+import kotlinx.datetime.LocalTime
 
 @Immutable
 data class BookmarkItemUiState(
@@ -21,5 +20,5 @@ data class BookmarkItemUiState(
         get() = session.speakers.joinToString { it.name }
 
     val time: LocalTime
-        get() = session.startTime.toJavaLocalDateTime().toLocalTime()
+        get() = session.startTime.time
 }

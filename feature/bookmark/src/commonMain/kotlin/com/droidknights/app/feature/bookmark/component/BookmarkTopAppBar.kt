@@ -12,13 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.theme.Gray
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.Purple01
-import com.droidknights.app.feature.bookmark.R
+import droidknights.feature.bookmark.generated.resources.Res
+import droidknights.feature.bookmark.generated.resources.book_mark_top_bar_title
+import droidknights.feature.bookmark.generated.resources.edit_button_confirm_label
+import droidknights.feature.bookmark.generated.resources.edit_button_edit_label
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun BookmarkTopAppBar(
@@ -42,7 +44,7 @@ internal fun BookmarkTopAppBar(
     ) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = stringResource(id = R.string.book_mark_top_bar_title),
+            text = stringResource(Res.string.book_mark_top_bar_title),
             style = KnightsTheme.typography.titleSmallM,
             color = MaterialTheme.colorScheme.onSurface
         )
@@ -53,9 +55,9 @@ internal fun BookmarkTopAppBar(
                 .clickable(onClick = onClickEditButton)
                 .padding(horizontal = 12.dp),
             text = if (isEditMode) {
-                stringResource(id = R.string.edit_button_confirm_label)
+                stringResource(Res.string.edit_button_confirm_label)
             } else {
-                stringResource(id = R.string.edit_button_edit_label)
+                stringResource(Res.string.edit_button_edit_label)
             },
             style = KnightsTheme.typography.titleSmallM,
             color = editButtonColor
@@ -63,24 +65,24 @@ internal fun BookmarkTopAppBar(
     }
 }
 
-@Preview
-@Composable
-private fun BookmarkTopAppBarPreview() {
-    KnightsTheme {
-        BookmarkTopAppBar(
-            isEditMode = false,
-            onClickEditButton = {}
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun BookmarkTopAppBarEditModePreview() {
-    KnightsTheme {
-        BookmarkTopAppBar(
-            isEditMode = true,
-            onClickEditButton = {}
-        )
-    }
-}
+//@Preview
+//@Composable
+//private fun BookmarkTopAppBarPreview() {
+//    KnightsTheme {
+//        BookmarkTopAppBar(
+//            isEditMode = false,
+//            onClickEditButton = {}
+//        )
+//    }
+//}
+//
+//@Preview
+//@Composable
+//private fun BookmarkTopAppBarEditModePreview() {
+//    KnightsTheme {
+//        BookmarkTopAppBar(
+//            isEditMode = true,
+//            onClickEditButton = {}
+//        )
+//    }
+//}
