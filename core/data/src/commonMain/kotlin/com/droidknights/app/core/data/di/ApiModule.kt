@@ -4,11 +4,12 @@ import com.droidknights.app.core.data.api.GithubApi
 import com.droidknights.app.core.data.api.GithubRawApi
 import com.droidknights.app.core.data.api.createGithubApi
 import com.droidknights.app.core.data.api.createGithubRawApi
-import kotlinx.serialization.json.Json
 import de.jensklingenberg.ktorfit.Ktorfit
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.serialization.kotlinx.json.json
+import io.ktor.http.ContentType
+import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
+import kotlinx.serialization.json.Json
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Named
@@ -29,7 +30,11 @@ class ApiModule {
         json: Json,
     ): HttpClient = HttpClient {
         install(ContentNegotiation) {
-            json(json = json)
+            register(
+                ContentType.Text.Plain, KotlinxSerializationConverter(
+                   json
+                )
+            )
         }
     }
 

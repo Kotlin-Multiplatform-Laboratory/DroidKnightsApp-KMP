@@ -21,8 +21,6 @@ kotlin {
         }
     }
 
-    jvm()
-
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -45,6 +43,9 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(projects.core.model)
+            implementation(projects.core.datastore)
+
             implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
