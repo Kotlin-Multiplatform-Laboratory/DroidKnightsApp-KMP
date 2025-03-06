@@ -43,6 +43,7 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(projects.core.model)
             implementation(projects.core.datastore)
 
             implementation(compose.material3)

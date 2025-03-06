@@ -1,15 +1,19 @@
 import com.droidknights.app.setNamespace
 
 plugins {
-    id("droidknights.android.library")
-    id("droidknights.android.compose")
+    id("droidknights.kotlin.multiplatform")
+    id("droidknights.compose.multiplatform")
 }
 
 android {
     setNamespace("core.ui")
 }
 
-dependencies {
-    implementation(projects.core.model)
-    implementation(projects.core.designsystem)
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.core.model)
+            implementation(projects.core.designsystem)
+        }
+    }
 }

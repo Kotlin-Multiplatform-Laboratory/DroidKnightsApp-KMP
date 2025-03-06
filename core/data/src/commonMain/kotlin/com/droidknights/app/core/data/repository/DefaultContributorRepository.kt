@@ -34,12 +34,12 @@ internal class DefaultContributorRepository(
                             data.years.map { year -> year to data.id }
                         }
                         .groupBy { it.first } // year 기준으로 그룹화
-                        //.toSortedMap()
+                       // .toSortedMap()
                         .mapValues {
                             it.value.distinctBy { it.second }.map { it.second }
                         } // 각 그룹의 id 리스트 만들고 중복 제거
                         .toMap()
-                        //.toSortedMap(compareByDescending { it })
+                     //  .toSortedMap(compareByDescending { it })
                 }
         ) { contributors, yearMap ->
             // id를 기반으로 두 리스트 매칭
