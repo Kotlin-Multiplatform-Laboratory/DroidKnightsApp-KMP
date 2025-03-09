@@ -1,12 +1,9 @@
-name: Android Pull Request CI
+name: Pull Request CI
 
 on:
-  push:
-    branches:
-      - develop
   pull_request:
     branches:
-      - develop
+      - main-kmp
   workflow_dispatch:
     inputs:
       shouldRunAndroid:
