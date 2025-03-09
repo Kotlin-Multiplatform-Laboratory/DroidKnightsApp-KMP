@@ -4,7 +4,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.droidknights.app.core.testing.category.ScreenshotTests
 import com.droidknights.app.core.testing.robot.KnightsAppRobot
 import com.droidknights.app.core.testing.rule.RobotTestRule
-import com.droidknights.app.feature.main.MainActivity
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidTest

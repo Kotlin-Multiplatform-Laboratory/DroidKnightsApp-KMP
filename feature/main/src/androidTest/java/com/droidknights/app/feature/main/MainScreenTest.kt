@@ -33,8 +33,7 @@ class MainScreenTest {
             navController = TestNavHostController(LocalContext.current)
             navController.navigatorProvider.addNavigator(ComposeNavigator())
             MainScreen(
-                rememberMainNavigator(navController = navController),
-                onChangeDarkTheme = {}
+                rememberMainNavigator(navController = navController)
             )
         }
     }

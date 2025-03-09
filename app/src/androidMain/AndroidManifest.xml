@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".DroidKnightsApplication"
+        android:configChanges="uiMode"
+        android:exported="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Multiplatform App"
-        android:theme="@android:style/Theme.Material.NoActionBar">
+        android:label="DroidKnights"
+        android:theme="@style/Theme.DroidKnights.TransparentSystemBar">
         <activity
             android:name=".AppActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:exported="true"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

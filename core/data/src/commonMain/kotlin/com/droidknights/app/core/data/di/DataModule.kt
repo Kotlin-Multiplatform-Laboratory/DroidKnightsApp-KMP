@@ -6,11 +6,14 @@ import com.droidknights.app.core.data.api.fake.AssetsGithubRawApi
 import com.droidknights.app.core.data.file.defaultAssetFileProvider
 import com.droidknights.app.core.data.repository.DefaultContributorRepository
 import com.droidknights.app.core.data.repository.DefaultSessionRepository
+import com.droidknights.app.core.data.repository.DefaultSettingsRepository
 import com.droidknights.app.core.data.repository.DefaultSponsorRepository
 import com.droidknights.app.core.data.repository.api.ContributorRepository
 import com.droidknights.app.core.data.repository.api.SessionRepository
+import com.droidknights.app.core.data.repository.api.SettingsRepository
 import com.droidknights.app.core.data.repository.api.SponsorRepository
 import com.droidknights.app.core.datastore.datasource.SessionPreferencesDataSource
+import com.droidknights.app.core.datastore.datasource.SettingsPreferencesDataSource
 import kotlinx.serialization.json.Json
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
@@ -38,6 +41,11 @@ class FakeModule {
         githubRawApi: AssetsGithubRawApi,
     ): ContributorRepository =
         DefaultContributorRepository(githubApi, githubRawApi)
+
+    @Single
+    fun provideSettingsRepository(
+        settingsDataSource: SettingsPreferencesDataSource
+    ): SettingsRepository = DefaultSettingsRepository(settingsDataSource)
 
     @Single
     fun provideGithubRawApi(

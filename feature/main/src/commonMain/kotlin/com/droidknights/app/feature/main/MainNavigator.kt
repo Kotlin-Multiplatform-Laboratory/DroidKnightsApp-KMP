@@ -18,7 +18,7 @@ import com.droidknights.app.feature.session.navigation.navigateSession
 import com.droidknights.app.feature.session.navigation.navigateSessionDetail
 import com.droidknights.app.feature.setting.navigation.navigateSetting
 
-internal class MainNavigator(
+class MainNavigator(
     val navController: NavHostController,
 ) {
     private val currentDestination: NavDestination?
@@ -34,7 +34,7 @@ internal class MainNavigator(
 
     fun navigate(tab: MainTab) {
         val navOptions = navOptions {
-            popUpTo(navController.graph.findStartDestination().id) {
+            popUpTo(navController.graph.findStartDestination().route ?: startDestination) {
                 saveState = true
             }
             launchSingleTop = true
@@ -81,7 +81,7 @@ internal class MainNavigator(
 }
 
 @Composable
-internal fun rememberMainNavigator(
+fun rememberMainNavigator(
     navController: NavHostController = rememberNavController(),
 ): MainNavigator = remember(navController) {
     MainNavigator(navController)

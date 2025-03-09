@@ -1,7 +1,9 @@
 import com.droidknights.app.setNamespace
 
 plugins {
-    id("droidknights.android.feature")
+    id("droidknights.kotlin.multiplatform")
+    id("droidknights.compose.multiplatform")
+    id("droidknights.kotlin.koin")
 }
 
 android {
@@ -13,24 +15,43 @@ android {
     }
 }
 
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.feature.home)
+            implementation(projects.feature.setting)
+            implementation(projects.feature.contributor)
+            implementation(projects.feature.session)
+            implementation(projects.feature.bookmark)
+            implementation(projects.core.dataApi)
+            implementation(projects.core.data)
+            implementation(projects.core.navigation)
+            implementation(projects.core.designsystem)
+            implementation(projects.core.model)
+
+            implementation(libs.compose.shimmer)
+            implementation(libs.compose.navigation)
+            implementation(libs.kotlinx.immutable)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.androidx.lifecycle.viewModelCompose)
+            implementation(libs.androidx.core.ktx)
+        }
+
+        androidInstrumentedTest {
+            dependencies {
+                implementation(projects.core.testing)
+            }
+        }
+    }
+}
+
 dependencies {
-    implementation(projects.feature.home)
-    implementation(projects.feature.setting)
-    implementation(projects.feature.contributor)
-    implementation(projects.feature.session)
-    implementation(projects.feature.bookmark)
-    androidTestImplementation(projects.core.testing)
     debugImplementation(projects.core.uiTestHiltManifest)
-
-    implementation(projects.widget)
-    implementation(projects.core.dataApi)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.lifecycle.runtimeCompose)
-    implementation(libs.androidx.lifecycle.viewModelCompose)
-    implementation(libs.kotlinx.immutable)
     androidTestImplementation(libs.hilt.android.testing)
     kspAndroidTest(libs.hilt.android.compiler)
 }

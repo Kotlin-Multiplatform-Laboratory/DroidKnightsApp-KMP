@@ -35,6 +35,7 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
+            implementation(projects.feature.main)
             implementation(libs.androidx.activity.compose)
 
             implementation(libs.koin.android)
@@ -45,6 +46,8 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core.model)
             implementation(projects.core.datastore)
+            implementation(projects.core.designsystem)
+            implementation(projects.feature.main)
 
             implementation(compose.material3)
             implementation(compose.components.resources)
