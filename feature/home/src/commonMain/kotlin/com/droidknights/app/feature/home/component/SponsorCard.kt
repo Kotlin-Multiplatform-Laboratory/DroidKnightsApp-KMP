@@ -26,8 +26,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.KnightsCard
@@ -37,10 +35,17 @@ import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.LightGray
 import com.droidknights.app.core.designsystem.theme.White
 import com.droidknights.app.core.model.Sponsor
-import com.droidknights.app.feature.home.R
 import com.droidknights.app.feature.home.model.SponsorsUiState
 import com.valentinilk.shimmer.shimmer
+import droidknights.feature.home.generated.resources.Res
+import droidknights.feature.home.generated.resources.ic_crown_gold
+import droidknights.feature.home.generated.resources.ic_crown_platinum
+import droidknights.feature.home.generated.resources.ic_crown_silver
+import droidknights.feature.home.generated.resources.sponsor_card_description
+import droidknights.feature.home.generated.resources.sponsor_card_title
 import kotlinx.collections.immutable.ImmutableList
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun SponsorCard(uiState: SponsorsUiState) {
@@ -61,14 +66,14 @@ private fun SponsorCardContents(
         ) {
             Column(modifier = Modifier.padding(horizontal = 24.dp)) {
                 Text(
-                    text = stringResource(id = R.string.sponsor_card_title),
+                    text = stringResource(resource = Res.string.sponsor_card_title),
                     style = KnightsTheme.typography.headlineSmallBL,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                     modifier = Modifier.padding(top = 24.dp),
                 )
                 Text(
                     text = stringResource(
-                        id = R.string.sponsor_card_description,
+                        resource = Res.string.sponsor_card_description,
                         uiState.platinumCount,
                         uiState.goldCount,
                         uiState.silverCount
@@ -130,9 +135,9 @@ private fun SponsorLogo(
 ) {
     val gradeIcon by rememberUpdatedState(
         when (sponsor.grade) {
-            Sponsor.Grade.GOLD -> R.drawable.ic_crown_gold
-            Sponsor.Grade.PLATINUM -> R.drawable.ic_crown_platinum
-            Sponsor.Grade.SILVER -> R.drawable.ic_crown_silver
+            Sponsor.Grade.GOLD -> Res.drawable.ic_crown_gold
+            Sponsor.Grade.PLATINUM -> Res.drawable.ic_crown_platinum
+            Sponsor.Grade.SILVER -> Res.drawable.ic_crown_silver
         }
     )
 
@@ -162,7 +167,7 @@ private fun SponsorLogo(
             }
         }
         Image(
-            painter = painterResource(id = gradeIcon),
+            painter = painterResource(resource = gradeIcon),
             contentDescription = null,
             modifier = Modifier.size(28.dp).align(Alignment.TopStart),
         )
