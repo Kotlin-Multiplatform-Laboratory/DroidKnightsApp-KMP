@@ -32,7 +32,7 @@ sealed interface SponsorsUiState {
         val groupedSponsorsByGrade: ImmutableList<List<Sponsor>> =
             sponsors
                 .groupBy { it.grade }
-                .toSortedMap(compareBy { it.priority })
+//                .toSortedMap(compareBy { it.priority })
                 .values
                 .toPersistentList()
     }
