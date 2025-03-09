@@ -16,6 +16,7 @@ kotlin {
             implementation(projects.core.domain)
             implementation(projects.core.navigation)
             implementation(projects.core.designsystem)
+            implementation(projects.core.model)
 
             implementation(libs.kotlinx.immutable)
             implementation(libs.compose.shimmer)
