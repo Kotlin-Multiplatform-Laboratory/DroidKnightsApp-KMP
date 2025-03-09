@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.collectLatest
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun HomeRoute(
+ fun HomeRoute(
     padding: PaddingValues,
     onSessionClick: () -> Unit,
     onContributorClick: () -> Unit,

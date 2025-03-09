@@ -18,7 +18,6 @@ kotlin {
             implementation(projects.core.designsystem)
             implementation(projects.core.model)
 
-            implementation(libs.kotlinx.immutable)
             implementation(libs.compose.shimmer)
         }
     }

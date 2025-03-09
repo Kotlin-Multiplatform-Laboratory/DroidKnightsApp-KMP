@@ -3,8 +3,6 @@ package com.droidknights.app.feature.home.model
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import com.droidknights.app.core.model.Sponsor
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.toPersistentList
 
 @Stable
 sealed interface SponsorsUiState {
@@ -17,7 +15,7 @@ sealed interface SponsorsUiState {
 
     @Immutable
     data class Sponsors(
-        val sponsors: ImmutableList<Sponsor>,
+        val sponsors: List<Sponsor>,
     ) : SponsorsUiState {
 
         val platinumCount: Int =
@@ -29,11 +27,11 @@ sealed interface SponsorsUiState {
         val silverCount: Int =
             sponsors.count { it.grade == Sponsor.Grade.SILVER }
 
-        val groupedSponsorsByGrade: ImmutableList<List<Sponsor>> =
+        val groupedSponsorsByGrade: List<List<Sponsor>> =
             sponsors
                 .groupBy { it.grade }
 //                .toSortedMap(compareBy { it.priority })
                 .values
-                .toPersistentList()
+                .toList()
     }
 }

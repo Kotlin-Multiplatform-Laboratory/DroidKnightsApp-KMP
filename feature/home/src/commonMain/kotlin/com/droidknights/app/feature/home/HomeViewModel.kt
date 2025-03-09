@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.droidknights.app.core.domain.usecase.GetSponsorsUseCase
 import com.droidknights.app.feature.home.model.SponsorsUiState
-import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +25,7 @@ class HomeViewModel(
         flow { emit(getSponsorsUseCase()) }
             .map { sponsors ->
                 if (sponsors.isNotEmpty()) {
-                    SponsorsUiState.Sponsors(sponsors.toPersistentList())
+                    SponsorsUiState.Sponsors(sponsors)
                 } else {
                     SponsorsUiState.Empty
                 }
