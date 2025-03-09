@@ -28,10 +28,10 @@ jobs:
 
   iOS:
     if: ${{ inputs.shouldRunKmp == 'true' || inputs.shouldRunIos == 'true' }}
-    runs-on: macos-12
+    runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Job set up
         uses: ./.github/actions/job-set-up
