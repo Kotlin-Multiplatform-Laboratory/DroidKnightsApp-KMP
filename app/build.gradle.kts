@@ -119,6 +119,7 @@ dependencies {
     implementation(projects.feature.main)
     implementation(projects.feature.home)
     implementation(projects.feature.bookmark)
+    implementation(projects.feature.contributor)
     implementation(projects.core.data)
     implementation(projects.core.domain)
     implementation(projects.core.designsystem)

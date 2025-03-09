@@ -9,6 +9,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.http.ContentType
 import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
@@ -30,9 +31,10 @@ class ApiModule {
         json: Json,
     ): HttpClient = HttpClient {
         install(ContentNegotiation) {
+            json(json)
             register(
                 ContentType.Text.Plain, KotlinxSerializationConverter(
-                   json
+                    json
                 )
             )
         }
