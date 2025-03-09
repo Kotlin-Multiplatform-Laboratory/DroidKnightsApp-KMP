@@ -11,15 +11,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.droidknights.app.core.designsystem.component.KnightsCard
 import com.droidknights.app.core.designsystem.theme.Black
 import com.droidknights.app.core.designsystem.theme.Graphite
 import com.droidknights.app.core.designsystem.theme.KnightsTheme
 import com.droidknights.app.core.designsystem.theme.White
-import com.droidknights.app.feature.home.R
+import droidknights.feature.home.generated.resources.Res
+import droidknights.feature.home.generated.resources.bg_card_session
+import droidknights.feature.home.generated.resources.session_card_caption
+import droidknights.feature.home.generated.resources.session_card_title
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun SessionCard(
@@ -31,7 +34,7 @@ internal fun SessionCard(
             .height(164.dp),
     ) {
         Image(
-            painter = painterResource(id = R.drawable.bg_card_session),
+            painter = painterResource(resource = Res.drawable.bg_card_session),
             contentScale = ContentScale.FillBounds,
             contentDescription = null
         )
@@ -41,7 +44,7 @@ internal fun SessionCard(
         ) {
             SessionCardCaption()
             Text(
-                text = stringResource(id = R.string.session_card_title),
+                text = stringResource(resource = Res.string.session_card_title),
                 style = KnightsTheme.typography.headlineSmallBL,
                 color = Black,
                 modifier = Modifier.padding(top = 12.dp),
@@ -58,7 +61,7 @@ private fun SessionCardCaption() {
             .padding(horizontal = 12.dp, vertical = 2.dp)
     ) {
         Text(
-            text = stringResource(id = R.string.session_card_caption),
+            text = stringResource(resource = Res.string.session_card_caption),
             style = KnightsTheme.typography.labelSmallM,
             color = White,
         )
