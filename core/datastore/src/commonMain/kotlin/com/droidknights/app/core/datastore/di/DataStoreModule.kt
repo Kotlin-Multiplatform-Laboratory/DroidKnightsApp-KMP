@@ -8,8 +8,8 @@ import org.koin.core.annotation.Named
 import org.koin.core.annotation.Single
 
 @Module
-@ComponentScan
-object DataStoreModule {
+@ComponentScan("com.droidknights.app.core.datastore")
+class DataStoreModule {
     val dataStoreProvider = DataStoreProvider()
 
     @Single
