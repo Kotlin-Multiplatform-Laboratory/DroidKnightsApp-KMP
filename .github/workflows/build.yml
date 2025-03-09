@@ -24,7 +24,7 @@ jobs:
       - name: Job set up
         uses: ./.github/actions/job-set-up
 
-      - run: ./gradlew :androidApp:assemble
+      - run: ./gradlew :app:assembleDebug --stacktrace
 
   iOS:
     if: ${{ inputs.shouldRunKmp == 'true' || inputs.shouldRunIos == 'true' }}
