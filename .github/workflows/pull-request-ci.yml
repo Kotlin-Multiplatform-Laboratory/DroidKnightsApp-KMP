@@ -30,6 +30,6 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      shouldRunKmp: 'true'
-      shouldRunAndroid: ${{ contains(github.event.pull_request.labels.*.name, 'android') }}
-      shouldRunIos: ${{ contains(github.event.pull_request.labels.*.name, 'ios') }}
+      shouldRunKmp: ${{ contains(github.event.pull_request.labels.*.name, 'Common') }}
+      shouldRunAndroid: ${{ contains(github.event.pull_request.labels.*.name, 'Android') }}
+      shouldRunIos: ${{ contains(github.event.pull_request.labels.*.name, 'iOS') }}
