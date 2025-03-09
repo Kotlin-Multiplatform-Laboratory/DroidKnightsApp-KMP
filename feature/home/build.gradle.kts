@@ -17,6 +17,10 @@ kotlin {
             implementation(libs.compose.shimmer)
         }
         commonMain.dependencies {
+            implementation(projects.core.domain)
+            implementation(projects.core.navigation)
+            implementation(projects.core.designsystem)
+
             implementation(libs.kotlinx.immutable)
             implementation(libs.compose.shimmer)
         }
