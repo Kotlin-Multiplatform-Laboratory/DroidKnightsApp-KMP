@@ -12,10 +12,6 @@ android {
 
 kotlin {
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.kotlinx.immutable)
-            implementation(libs.compose.shimmer)
-        }
         commonMain.dependencies {
             implementation(projects.core.domain)
             implementation(projects.core.navigation)
