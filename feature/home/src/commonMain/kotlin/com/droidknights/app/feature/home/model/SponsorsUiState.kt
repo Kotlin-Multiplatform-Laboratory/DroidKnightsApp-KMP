@@ -30,8 +30,8 @@ sealed interface SponsorsUiState {
         val groupedSponsorsByGrade: List<List<Sponsor>> =
             sponsors
                 .groupBy { it.grade }
-//                .toSortedMap(compareBy { it.priority })
-                .values
                 .toList()
+                .sortedBy { (grade) -> grade.priority }
+                .map { it.second }
     }
 }

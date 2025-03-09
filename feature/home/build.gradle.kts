@@ -4,6 +4,7 @@ plugins {
     id("droidknights.kotlin.multiplatform")
     id("droidknights.compose.multiplatform")
     id("droidknights.kotlin.koin")
+    alias(libs.plugins.kotest.multiplatform)
 }
 
 android {
@@ -20,5 +21,17 @@ kotlin {
 
             implementation(libs.compose.shimmer)
         }
+        commonTest.dependencies {
+            implementation(libs.kotest.assertions.core)
+            implementation(libs.kotest.framework.engine)
+            implementation(libs.kotest.framework.datatest)
+        }
+        androidUnitTest.dependencies {
+            implementation(libs.kotest.runner.junit5)
+        }
     }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
