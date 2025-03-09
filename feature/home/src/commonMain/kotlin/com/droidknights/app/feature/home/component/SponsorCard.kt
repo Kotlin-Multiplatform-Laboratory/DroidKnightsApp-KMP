@@ -43,7 +43,6 @@ import droidknights.feature.home.generated.resources.ic_crown_platinum
 import droidknights.feature.home.generated.resources.ic_crown_silver
 import droidknights.feature.home.generated.resources.sponsor_card_description
 import droidknights.feature.home.generated.resources.sponsor_card_title
-import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -90,7 +89,7 @@ private fun SponsorCardContents(
 
 @Composable
 private fun SponsorGroup(
-    groupedSponsorsByGrade: ImmutableList<List<Sponsor>>,
+    groupedSponsorsByGrade: List<List<Sponsor>>,
 ) {
     Column(
         modifier = Modifier.fillMaxWidth().padding(24.dp),
