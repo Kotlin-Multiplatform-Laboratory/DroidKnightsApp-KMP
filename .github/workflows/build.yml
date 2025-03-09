@@ -3,6 +3,9 @@ name: Build
 on:
   workflow_call:
     inputs:
+      shouldRunKmp:
+        required: true
+        type: string
       shouldRunAndroid:
         required: true
         type: string
