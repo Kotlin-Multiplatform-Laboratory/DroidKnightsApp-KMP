@@ -24,7 +24,6 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotest.assertions.core)
             implementation(libs.kotest.framework.engine)
-            implementation(libs.kotest.framework.datatest)
         }
         androidUnitTest.dependencies {
             implementation(libs.kotest.runner.junit5)
