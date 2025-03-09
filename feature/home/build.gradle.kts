@@ -1,14 +1,19 @@
 import com.droidknights.app.setNamespace
 
 plugins {
-    id("droidknights.android.feature")
+    id("droidknights.kotlin.multiplatform")
+    id("droidknights.compose.multiplatform")
 }
 
 android {
     setNamespace("feature.home")
 }
 
-dependencies {
-    implementation(libs.kotlinx.immutable)
-    implementation(libs.compose.shimmer)
+kotlin {
+    sourceSets {
+        androidMain.dependencies {
+            implementation(libs.kotlinx.immutable)
+            implementation(libs.compose.shimmer)
+        }
+    }
 }
