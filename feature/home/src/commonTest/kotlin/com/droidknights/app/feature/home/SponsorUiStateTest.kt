@@ -7,7 +7,7 @@ import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 
 class SponsorUiStateTest : BehaviorSpec({
-    given("다음과 같은 Sponsor가 주어졌을 때") {
+    given("다음과 같은 후원사 목록이 주어졌을 때") {
         val sponsors = listOf(
             Sponsor(
                 name = "당근",
