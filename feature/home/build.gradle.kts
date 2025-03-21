@@ -4,7 +4,7 @@ plugins {
     id("droidknights.kotlin.multiplatform")
     id("droidknights.compose.multiplatform")
     id("droidknights.kotlin.koin")
-    alias(libs.plugins.kotest.multiplatform)
+    id("droidknights.kotlin.kotest")
 }
 
 android {
@@ -20,10 +20,6 @@ kotlin {
             implementation(projects.core.model)
 
             implementation(libs.compose.shimmer)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotest.assertions.core)
-            implementation(libs.kotest.framework.engine)
         }
         androidUnitTest.dependencies {
             implementation(libs.kotest.runner.junit5)
