@@ -1,4 +1,4 @@
-package com.droidknights.app.feature.home
+package com.droidknights.app.feature.home.test
 
 import com.droidknights.app.core.model.Sponsor
 import com.droidknights.app.feature.home.model.SponsorsUiState

@@ -5,11 +5,11 @@ import com.droidknights.app.core.model.Sponsor
 import org.koin.core.annotation.Factory
 
 @Factory
-class GetSponsorsUseCase(
+open class GetSponsorsUseCase(
     private val sponsorRepository: SponsorRepository,
 ) {
 
-    suspend operator fun invoke(): List<Sponsor> =
+    open suspend operator fun invoke(): List<Sponsor> =
         sponsorRepository
             .getSponsors()
             .sortedBy { it.grade.priority }

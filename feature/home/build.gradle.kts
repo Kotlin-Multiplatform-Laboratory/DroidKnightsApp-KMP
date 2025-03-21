@@ -21,6 +21,11 @@ kotlin {
 
             implementation(libs.compose.shimmer)
         }
+        commonTest.dependencies {
+            implementation(projects.core.dataApi)
+            implementation(libs.coroutines.test)
+            implementation(libs.turbine)
+        }
         androidUnitTest.dependencies {
             implementation(libs.kotest.runner.junit5)
         }
