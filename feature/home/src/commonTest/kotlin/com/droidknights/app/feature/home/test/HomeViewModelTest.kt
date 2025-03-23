@@ -7,6 +7,7 @@ import com.droidknights.app.feature.home.HomeViewModel
 import com.droidknights.app.feature.home.model.SponsorsUiState
 import com.droidknights.app.feature.home.stub.StubSponsorRepository
 import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -60,7 +61,15 @@ class HomeViewModelTest : BehaviorSpec({
                 viewModel.sponsorsUiState.test {
                     awaitItem()
                     val actual = awaitItem()
-                    actual.shouldBeInstanceOf<SponsorsUiState.Sponsors>()
+                    val sponsorsList = actual.shouldBeInstanceOf<SponsorsUiState.Sponsors>()
+
+                    sponsorsList.sponsors.size shouldBe 2
+
+                    sponsorsList.sponsors.map { it.name } shouldBe listOf("Sponsor2", "Sponsor1")
+
+                    sponsorsList.sponsors.map { it.grade } shouldBe listOf(
+                        Sponsor.Grade.PLATINUM, Sponsor.Grade.GOLD
+                    )
                 }
             }
         }
