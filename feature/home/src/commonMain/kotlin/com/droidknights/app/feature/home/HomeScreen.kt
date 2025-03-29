@@ -10,16 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.droidknights.app.feature.home.component.ContributorCard
 import com.droidknights.app.feature.home.component.SessionCard
 import com.droidknights.app.feature.home.component.SponsorCard
 import com.droidknights.app.feature.home.model.SponsorsUiState
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun HomeRoute(
@@ -27,7 +25,7 @@ internal fun HomeRoute(
     onSessionClick: () -> Unit,
     onContributorClick: () -> Unit,
     onShowErrorSnackBar: (throwable: Throwable?) -> Unit,
-    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: HomeViewModel = koinViewModel(),
 ) {
     val sponsorsUiState by viewModel.sponsorsUiState.collectAsStateWithLifecycle()
 
@@ -65,16 +63,16 @@ private fun HomeScreen(
     }
 }
 
-@Preview
-@Composable
-private fun PreviewHomeScreen(
-    @PreviewParameter(SponsorsUiStatePreviewParameterProvider::class)
-    sponsorsUiState: SponsorsUiState,
-) {
-    HomeScreen(
-        padding = PaddingValues(),
-        sponsorsUiState = sponsorsUiState,
-        onSessionClick = {},
-        onContributorClick = {},
-    )
-}
+//@Preview
+//@Composable
+//private fun PreviewHomeScreen(
+//    @PreviewParameter(SponsorsUiStatePreviewParameterProvider::class)
+//    sponsorsUiState: SponsorsUiState,
+//) {
+//    HomeScreen(
+//        padding = PaddingValues(),
+//        sponsorsUiState = sponsorsUiState,
+//        onSessionClick = {},
+//        onContributorClick = {},
+//    )
+//}

@@ -21,6 +21,7 @@ plugins {
     alias(libs.plugins.roborazzi.plugin) apply false
     alias(libs.plugins.ktorfit) apply false
     alias(libs.plugins.compose.hotreload) apply false
+    alias(libs.plugins.kotest.multiplatform) apply false
 }
 
 apply {

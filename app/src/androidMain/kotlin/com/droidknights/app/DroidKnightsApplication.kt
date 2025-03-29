@@ -6,6 +6,7 @@ import com.droidknights.app.core.data.di.FakeModule
 import com.droidknights.app.core.datastore.di.DataStoreModule
 import com.droidknights.app.core.domain.UseCaseModule
 import com.droidknights.app.feature.contributor.ContributorModule
+import com.droidknights.app.feature.home.HomeModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -22,7 +23,8 @@ class DroidKnightsApplication : Application() {
                 UseCaseModule().module,
                 FakeModule().module,
                 DataStoreModule().module,
-                ContributorModule().module
+                ContributorModule().module,
+                HomeModule().module
             )
         }
     }
