@@ -40,7 +40,3 @@ android {
         assets.srcDirs("src/commonMain/resources/assets")
     }
 }
-
-ktorfit {
-    kotlinVersion = "2.1.0"
-}
