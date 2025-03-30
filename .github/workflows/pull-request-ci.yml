@@ -1,0 +1,32 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+    branches:
+      - main-kmp
+  workflow_dispatch:
+    inputs:
+      shouldRunAndroid:
+        description: 'Run Android build'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      shouldRunIos:
+        description: 'Run iOS build'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      shouldRunKmp: ${{ contains(github.event.pull_request.labels.*.name, 'Common') }}
+      shouldRunAndroid: ${{ contains(github.event.pull_request.labels.*.name, 'Android') }}
+      shouldRunIos: ${{ contains(github.event.pull_request.labels.*.name, 'iOS') }}
